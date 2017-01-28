@@ -1,0 +1,15 @@
+input{
+    margin-bottom: 5px;
+}
+
+h1{
+    color: coral;
+}
+
+label {
+    color: lightcoral;}
+
+body {
+    padding-top: 35px;
+    padding-bottom: 100px;
+}
