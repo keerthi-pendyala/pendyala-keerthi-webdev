@@ -7,6 +7,18 @@ body {
     padding-bottom: 80px;
 }
 
-.kp-border{
-    border-right: 2px solid gray;
+
+.kp-headings{
+    font-size: x-large;
+    font-family: "Agency FB";
+    color: seagreen;
+}
+
+.kp-gly{
+    padding-top: 30px;
+}
+
+.kp-gly-image{
+    z-index:2;
+    position :absolute;
 }

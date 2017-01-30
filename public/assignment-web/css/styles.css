@@ -17,3 +17,8 @@ body {
 #kp-div{
     padding-left: 0px;
 }
+
+p{
+    font-size: medium;
+    color: cornflowerblue;
+}
