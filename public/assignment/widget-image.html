@@ -2,28 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Widget Image</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-
+<div class="container-fluid">
 <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
     <div class="navbar-text pull-right">
-        <a>
+        <a href="widget-list.html">
             <span class="glyphicon glyphicon-ok">
             </span>
         </a>
     </div>
     <div class="navbar-text pull-left">
-        <a>
+        <a href="widget-list.html">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
         </a>
     </div>
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">Widget Edit
+        <a class="navbar-brand" href="#"><b class="kp-navbar-text">Widget Edit</b>
         </a>
+    </div>
     </div>
 </nav>
 <div class="container-fluid">
@@ -38,23 +40,25 @@
         </div>
         <div class="form-group">
             <label for="URL">URL</label>
-            <input type="URL" class="form-control" id="URL" placeholder="URL">
+            <input type="text" class="form-control" id="URL" placeholder="URL">
         </div>
         <div class="form-group">
             <label for="Width">Width</label>
-            <input type="Width" class="form-control" id="Width" placeholder="Width">
+            <input type="text" class="form-control" id="Width" placeholder="Width">
         </div>
         <div class="form-group">
             <label for="Upload">Upload</label>
-            <input type="Upload" class="form-control" id="Upload" placeholder="Upload">
+            <input type="file" class="form-control" id="Upload" placeholder="Upload">
         </div>
     </form>
 
-    <a class="btn btn-danger btn-block">Delete</a>
+    <a class="btn btn-primary btn-block">Upload</a>
+    <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
 
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
     <div class="navbar-text pull-right">
         <a>
             <span class="glyphicon glyphicon-user">
@@ -65,7 +69,8 @@
         <a class="navbar-brand" href="#">
         </a>
     </div>
+    </div>
 </nav>
-
+</div>
 </body>
 </html>
