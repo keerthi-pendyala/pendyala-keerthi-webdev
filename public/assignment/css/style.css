@@ -7,9 +7,22 @@ body {
     padding-bottom: 80px;
 }
 
+a,u{
+    text-decoration: none !important;
+
+}
 
 .navbar{
     background-color: darkslategrey;
+}
+
+.navbar a:hover{
+    background: transparent;
+    color:yellow;
+}
+
+.navbar-default a:hover{
+    color:yellow;
 }
 
 .kp-navbar-text{
@@ -39,7 +52,7 @@ body {
 
 .kp-list{
     list-style-type:none;
-    padding-left: 15px;
+    padding-left:15px;
 }
 
 .kp-list-item{

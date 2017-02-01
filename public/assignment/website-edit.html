@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Website</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
 </head>
-<body class="container-fluid">
-
+<body>
+<div class="container-fluid">
 <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left">
-                <a>
+                <a href="website-list.html">
                  <span class="glyphicon glyphicon-chevron-left">
                  </span>
                 </a>
@@ -31,7 +32,7 @@
         </div>
         <div class="col-sm-8">
                 <div class="navbar-text pull-right">
-                    <a>
+                    <a href="website-list.html">
             <span class="glyphicon glyphicon-ok">
             </span>
                     </a>
@@ -43,42 +44,43 @@
             </div>
         </div>
     </div>
+    </div>
 </nav>
 
 <div class="row">
     <div class="col-sm-4 hidden-xs">
-        <div class="list-group container-fluid">
-            <ul>
-                <li class="list-group-item">
+        <div class="container-fluid">
+            <ul class="kp-list">
+                <li class="kp-list-item">
                     <div class = "row container-fluid">
-                        <a>Address Book App</a>
+                        <a href="#">Address Book App</a>
                         <a class= "pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                         </a>
                     </div>
                 </li>
-                <li class="list-group-item">
+                <li class="kp-list-item">
                     <div class = "row container-fluid">
-                        <a>Blogger</a>
+                        <a href="#">Blogger</a>
                         <a class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                         </a>
                     </div>
                 </li>
-                <li class="list-group-item">
+                <li class="kp-list-item">
                     <div class = "row container-fluid">
-                        <a>Blogging App</a>
+                        <a href="#">Blogging App</a>
                         <a class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
                         </a>
                     </div>
                 </li>
-                <li class="list-group-item">
+                <li class="kp-list-item">
                     <div class = "row container-fluid">
-                        <a>Script Testing App</a>
+                        <a href="#">Script Testing App</a>
                         <a class="pull-right">
                 <span class="glyphicon glyphicon-cog">
                 </span>
@@ -100,19 +102,20 @@
 
             <div class="form-group">
             <label for="Website Description">Website Description</label>
-            <textarea class= "form-control" id="Website Description" placeholder="Website Description"></textarea>
+            <textarea rows=3 class= "form-control" id="Website Description" placeholder="Website Description"></textarea>
             </div>
 
             </form>
 
-            <a class="btn btn-danger btn-block">Delete</a>
+            <a href="website-list.html" class="btn btn-danger btn-block">Delete</a>
 
         </div>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
     <div class="navbar-text pull-right">
-        <a>
+        <a href="profile.html">
             <span class="glyphicon glyphicon-user">
             </span>
         </a>
@@ -121,7 +124,8 @@
         <a class="navbar-brand" href="#">
         </a>
     </div>
+    </div>
 </nav>
-
+</div>
 </body>
 </html>
