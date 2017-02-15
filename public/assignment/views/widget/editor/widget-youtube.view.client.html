@@ -1,33 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Widget Youtube</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-<div class="container-fluid">
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-    <div class="navbar-text pull-right">
-        <a href="widget-list.html">
+ <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget)">
             <span class="glyphicon glyphicon-ok">
             </span>
-        </a>
-    </div>
-    <div class="navbar-text pull-left">
-        <a href="widget-list.html">
+                </a>
+            </div>
+            <div class="navbar-text pull-left">
+                <a href="#/widget-list.html">
             <span class="glyphicon glyphicon-chevron-left">
             </span>
-        </a>
-    </div>
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#"><b class="kp-navbar-text">Widget Edit</b>
-        </a>
-    </div>
-    </div>
-</nav>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><b class="kp-navbar-text">Widget Edit</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+
 <div class="container-fluid">
     <form>
         <div class="form-group">
@@ -40,15 +31,15 @@
         </div>
         <div class="form-group">
             <label for="URL">URL</label>
-            <input type="text" class="form-control" id="URL" value="https://www.youtube.com/?gl=IN">
+            <input ng-model="model.widget.url" type="text" class="form-control" id="URL" value="https://www.youtube.com/?gl=IN">
         </div>
         <div class="form-group">
             <label for="Width">Width</label>
-            <input type="text" class="form-control" id="Width" placeholder="Width">
+            <input ng-model="model.widget.width" type="text" class="form-control" id="Width" placeholder="Width">
         </div>
     </form>
 
-    <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
+    <a href="../widget-list.view.client.html" class="btn btn-danger btn-block">Delete</a>
 
 </div>
 
@@ -67,5 +58,3 @@
     </div>
 </nav>
 </div>
-</body>
-</html>
