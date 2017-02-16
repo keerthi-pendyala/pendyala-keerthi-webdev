@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("profileController", profileController);
@@ -7,13 +7,13 @@
         var vm = this;
         vm.userId = $routeParams['uid'];
         vm.update = update;
-        vm.deleteUser=deleteUser;
+        vm.deleteUser = deleteUser;
         var user = UserService.findUserById(vm.userId);
         vm.user = user;
 
         function update(newUser) {
             var user = UserService.updateUser(vm.userId, newUser);
-            if(user == null) {
+            if (user == null) {
                 vm.error = "unable to update user";
             } else {
                 vm.message = "user successfully updated"

@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .controller("WebsiteNewController", WebsiteNewController);
@@ -11,12 +11,13 @@
         function init() {
             vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
         }
+
         init();
 
-        function createWebsite (website) {
+        function createWebsite(website) {
             WebsiteService.createWebsite(vm.userId, website);
             //vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-            $location.url("/user/"+vm.userId+"/website");
+            $location.url("/user/" + vm.userId + "/website");
         };
     }
 })();
