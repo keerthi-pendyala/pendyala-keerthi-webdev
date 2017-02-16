@@ -18,7 +18,7 @@
         init();
 
         function updateWebsite(newWebsite) {
-            var websiteone = WebsiteService.updateWebsite(vm.userId, vm.websiteId, newWebsite);
+            var websiteone = WebsiteService.updateWebsite(vm.websiteId, newWebsite);
             if (websiteone == null) {
                 vm.error = "unable to update website";
             }
