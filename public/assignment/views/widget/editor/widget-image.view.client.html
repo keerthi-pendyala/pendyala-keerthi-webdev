@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-text pull-right">
-                <a ng-click="model.updateWidget(widget)">
+                <a ng-click="model.updateWidget(model.widget)">
             <span class="glyphicon glyphicon-ok">
             </span>
                 </a>
@@ -23,11 +23,11 @@
     <form>
         <div class="form-group">
             <label for="Name">Name</label>
-            <input type="text" class="form-control" id="Name" placeholder="Name">
+            <input ng-model="model.widget.name" type="text" class="form-control" id="Name" placeholder="Name">
         </div>
         <div class="form-group">
             <label for="Text">Text</label>
-            <input type="text" class="form-control" id="Text" placeholder="Text">
+            <input ng-model="model.widget.text" type="text" class="form-control" id="Text" placeholder="Text">
         </div>
         <div class="form-group">
             <label for="URL">URL</label>
@@ -45,7 +45,7 @@
     </form>
 
     <a class="btn btn-primary btn-block">Upload</a>
-    <a href="#/widget-list.html" class="btn btn-danger btn-block">Delete</a>
+    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">Delete</a>
 
 </div>
 

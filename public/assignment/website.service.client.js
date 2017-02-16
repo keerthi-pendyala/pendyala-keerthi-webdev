@@ -40,10 +40,10 @@
             return null;
         }
 
-        function updateWebsite(userId, newWebsiteId ,newWebsite) {
+        function updateWebsite(newWebsiteId ,newWebsite) {
             for(var w in websites) {
                 var website = websites[w];
-                if( website.developerId === userId && website._id === newWebsiteId) {
+                if(website._id === newWebsiteId) {
                     websites[w].name = newWebsite.name;
                     websites[w].description = newWebsite.description;
                     return website;

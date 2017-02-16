@@ -5,6 +5,7 @@
 
     function WidgetListController($sce, $routeParams, WidgetService) {
         var vm = this;
+
         vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         vm.getTrustedHtml = getTrustedHtml;
         vm.getWidgetTemplateUrl = getWidgetTemplateUrl;

@@ -17,7 +17,8 @@
             "findUserByCredentials": findUserByCredentials,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
-            "createUser":createUser
+            "createUser":createUser,
+            "deleteUser":deleteUser
         };
         return api;
 
@@ -27,6 +28,15 @@
             newUser._id=random.toString();
             users.push(newUser);
             return newUser;
+        }
+
+        function deleteUser(UserId)
+        {
+            for(var u in users) {
+                if(users[u]._id === UserId) {
+                    users.splice(u, 1);
+                }
+            }
         }
 
         function updateUser(userId, newUser) {

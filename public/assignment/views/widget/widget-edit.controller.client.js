@@ -11,6 +11,7 @@
         vm.widgetId = $routeParams.wgid;
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWidget = updateWidget;
+        vm.deleteWidget=deleteWidget;
 
         function init() {
             vm.widget = WidgetService.findWidgetById(vm.widgetId);
@@ -19,6 +20,11 @@
 
         function getEditorTemplateUrl(type) {
             return 'views/widget/editor/widget-'+type+'.view.client.html';
+        }
+
+        function deleteWidget(){
+            WidgetService.deleteWidget(vm.widgetId);
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
         }
 
         function updateWidget(newWidget)
