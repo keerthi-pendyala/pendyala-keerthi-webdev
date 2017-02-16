@@ -12,7 +12,7 @@
         vm.user = user;
 
         function update(newUser) {
-            var user = UserService.updateUser(userId, newUser);
+            var user = UserService.updateUser(vm.userId, newUser);
             if(user == null) {
                 vm.error = "unable to update user";
             } else {

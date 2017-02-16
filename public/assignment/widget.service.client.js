@@ -17,8 +17,6 @@
             { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
         ]
 
-
-        this.findAllWidgets = findAllWidgets;
         this.findWidgetsByPageId=findWidgetsByPageId;
         this.findWidgetById = findWidgetById;
         this.updateWidget = updateWidget;
@@ -28,10 +26,6 @@
         this.createImageWidget=createImageWidget;
         this.createYoutubeWidget=createYoutubeWidget;
 
-
-        function findAllWidgets(pageId) {
-            return widgets;
-        }
 
         function findWidgetsByPageId(pageId) {
             var wids = [];

@@ -13,7 +13,7 @@
         vm.createYoutubeWidget=createYoutubeWidget;
 
         function init() {
-            vm.widgets = WidgetService.findAllWidgets(vm.pageId);
+            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
         }
         init();
 
