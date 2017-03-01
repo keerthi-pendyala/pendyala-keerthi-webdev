@@ -5,30 +5,31 @@ module.exports = function(app)
     app.delete("/api/test/:id", deleteMessage);
 
     var connectionString = 'mongodb://127.0.0.1:27017/test';
-	if(process.env.MONGODB_URI){
-    connectionString = process.env.MONGODB_URI
-    }
 
-    if(process.env.MLAB_USERNAME) {
-        connectionString = process.env.MLAB_USERNAME + ":" +
-            process.env.MLAB_PASSWORD + "@" +
-            process.env.MLAB_HOST + ':' +
-            process.env.MLAB_PORT + '/' +
-            process.env.MLAB_APP_NAME;
-    }
+    // if(process.env.MLAB_USERNAME_WEBDEV) {
+    //     var username = process.env.MLAB_USERNAME_WEBDEV;
+    //     var password = process.env.MLAB_PASSWORD_WEBDEV;
+    //
+    //     connectionString = 'mongodb://'+
+    //         username + ':' +
+    //         password +
+    //         '@ds157268.mlab.com:57268/heroku_nh37fqq4';
+    // }
 
-    var mongoose = require("mongoose");
+    console.log(connectionString);
+
+    var mongoose = require("mongoose");  // npm install mongoose --save
     mongoose.connect(connectionString);
 
     var TestSchema = mongoose.Schema({
         message: String
-    });
+    }, {collection: 'messages'});
 
     var TestModel = mongoose.model("TestModel", TestSchema);
 
     function findAllMessages(req, res) {
         TestModel
-            .find()
+            .find() // select * from messages -- where
             .then(
                 function(tests) {
                     res.json(tests);

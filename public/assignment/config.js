@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .config(configuration);
 
-    function configuration($routeProvider, $locationProvider) {
+    function configuration($routeProvider, $locationProvider,$httpProvider) {
         $routeProvider
             .when("/", {
                 templateUrl: "views/user/templates/login.view.client.html",

@@ -7,6 +7,9 @@
         var vm = this;
         vm.websiteId = $routeParams.wid;
         vm.UserId = $routeParams.uid;
-        vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+        var promise = PageService.findPageByWebsiteId(vm.websiteId);
+        promise.success(function (pges) {
+            vm.pages = pges;
+        });
     }
 })();

@@ -5,6 +5,10 @@
         {{model.error}}
     </div>
 
+    <div ng-show="model.message" class="alert alert-danger" role="alert">
+        {{model.message}}
+    </div>
+
     <input ng-model="user.username"
            type="text"
            class="form-control"
@@ -17,7 +21,7 @@
            type="password"
            class="form-control"
            placeholder="verify password"/>
-    <a ng-click="model.createUser(user)"
+    <a ng-click="model.register(user)"
        class="btn btn-primary btn-block">Register</a>
     <a class="btn btn-danger  btn-block"
        href="#/login">Cancel</a>

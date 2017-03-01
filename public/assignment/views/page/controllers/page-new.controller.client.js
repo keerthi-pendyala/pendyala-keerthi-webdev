@@ -8,11 +8,17 @@
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.createPage = createPage;
-        vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+
+        var promise = PageService.findPageByWebsiteId(vm.websiteId);
+        promise.success(function (pages) {
+            vm.pages = pages;
+        });
 
         function createPage(page) {
-            PageService.createPage(vm.websiteId, page);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            var promise = PageService.createPage(vm.websiteId, page);
+            promise.success(function (pge) {
+                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            });
         }
     }
 })();

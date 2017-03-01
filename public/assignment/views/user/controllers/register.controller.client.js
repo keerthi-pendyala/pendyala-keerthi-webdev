@@ -1,21 +1,34 @@
-(function () {
-    angular
-        .module("WebAppMaker")
-        .controller("registerController", registerController);
+    (function () {
+        angular
+            .module("WebAppMaker")
+            .controller("registerController", registerController);
 
-    function registerController($location, UserService) {
-        var vm = this;
-        vm.createUser = createUser;
+        function registerController($location, UserService) {
+            var vm = this;
+            vm.register = register;
+            vm.createUser = createUser;
 
-        function createUser(user) {
-
-            if (user.password === user.verifypassword) {
-                var Newuser = UserService.createUser(user);
-                $location.url("/user/" + Newuser._id);
+            function register(user) {
+                UserService
+                    .findUserByUsername(user.username)
+                    .success(function (user) {
+                        vm.message = "Username is taken , Please use a different one";
+                    })
+                    .error(function (err) {
+                        vm.createUser(user);
+                    });
             }
 
-            else
-                vm.error = "Passwords don't match, Try Again"
-        };
-    }
-})();
+            function createUser(user) {
+                UserService
+                    .createUser(user)
+                    .success(function (Newuser) {
+                        $location.url("/user/" + Newuser._id);
+                    })
+                    .error(function (err) {
+                        vm.error = "Passwords don't match, Try Again"
+                    });
+            }
+        }
+    });
+
