@@ -18,6 +18,7 @@
                     .findWidgetById(vm.widgetId)
                     .success(function(widget){
                     vm.widget = widget;
+                    console.log(vm.widget);
                     });
             }
 

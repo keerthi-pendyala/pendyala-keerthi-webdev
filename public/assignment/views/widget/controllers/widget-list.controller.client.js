@@ -12,6 +12,9 @@
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
+        $(".widget-list").sortable({
+            axis: "y"
+        });
 
 
         function init() {
@@ -22,6 +25,7 @@
                 });
         }
         init();
+
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'views/widget/templates/widget-' + widgetType + '.view.client.html';

@@ -19,7 +19,9 @@
 </nav>
 
 <div class="container-fluid">
+    <div class="widget-list">
             <div ng-repeat="widget in model.widgets">
+
                 <div class="jga-toolbar">
                     <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                         <span class="glyphicon glyphicon-cog"></span>
@@ -46,6 +48,7 @@
             </div>
         </div>
     </div>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

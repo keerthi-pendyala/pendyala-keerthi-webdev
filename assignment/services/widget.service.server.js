@@ -17,6 +17,22 @@
                 { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
             ]
 
+            var multer = require('multer');
+            var upload = multer({ dest: __dirname+'/../../public/uploads' });
+            app.post ("/api/upload", upload.single('myFile'), uploadImage);
+
+            function uploadImage(req, res) {
+                var myFile = req.file;
+                var filename = myFile.filename;
+                for (var w in widgets) {
+                    if (widgets[w]._id === req.body.widgetId) {
+                        widgets[w].url = req.protocol + '://' + req.get('host') + "/uploads/" + filename;
+                        widgets[w].width=req.body.width;
+                    }
+                }
+                res.redirect("/assignment/#/user/" + req.body.userId + "/website/" + req.body.websiteId + "/page/" + req.body.pageId + "/widget");
+            }
+
             function findAllWidgetsForPage(req, res) {
                 var pageId=req.params.pageId;
                 var wids = [];
@@ -41,7 +57,7 @@
                 var widgetId=req.params.widgetId;
                 for(var w in widgets) {
                     if(widgets[w]._id === widgetId) {
-                       return res.json(widgets[w]);
+                       res.json(widgets[w]);
 
                     }
                 }
@@ -69,7 +85,7 @@
                         res.json(widget);
                     }
                 }
-                res.sendStatus(404);
             }
         }
+
 
