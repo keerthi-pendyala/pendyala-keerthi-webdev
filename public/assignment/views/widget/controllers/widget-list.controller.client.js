@@ -12,9 +12,6 @@
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
-        $(".widget-list").sortable({
-            axis: "y"
-        });
 
 
         function init() {
