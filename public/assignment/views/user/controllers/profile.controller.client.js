@@ -12,18 +12,18 @@
             function init() {
                 UserService
                     .findUserById(vm.userId)
-                    .success(renderUser);
+                    .then(renderUser);
             }
             init();
 
             function update(newUser) {
                 UserService
                     .updateUser(vm.userId, newUser)
-                    .success(function (response) {
-                        vm.message = "user successfully updated"
-                    })
-                    .error(function () {
-                        vm.error = "unable to update user";
+                    .then(function (usr) {
+                        if(!usr)
+                            vm.error = "unable to update user";
+                        else
+                            vm.message = "user successfully updated";
                     });
             };
 
@@ -32,8 +32,12 @@
             }
 
             function deleteUser() {
-                UserService.deleteUser(vm.userId);
-                vm.error = "Account Deactivated";
+                UserService
+                    .deleteUser(vm.userId)
+                    .then(function (usr) {
+                        if(usr)
+                          vm.error = "Account Deactivated!";
+                });
             };
 
         }

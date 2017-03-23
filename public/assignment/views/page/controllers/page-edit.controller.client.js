@@ -12,20 +12,23 @@
         vm.deletePage = deletePage;
 
         function init() {
-            var promise = PageService.findPageByWebsiteId(vm.websiteId);
-            promise.success(function (pages) {
-                vm.pages = pages;
+            PageService
+                .findPageByWebsiteId(vm.websiteId)
+                .then(function (pages) {
+                   vm.pages = pages;
             });
-            var promise = PageService.findPageById(vm.pageId);
-            promise.success(function (page) {
+            PageService
+                .findPageById(vm.pageId)
+                .then(function (page) {
                 vm.page = page;
             });
         }
         init();
 
         function updatePage(newPage) {
-            var promise = PageService.updatePage(vm.pageId, newPage);
-            promise.success(function (pageone) {
+           PageService
+               .updatePage(vm.pageId, newPage)
+               .then(function (pageone) {
                 if (pageone == null) {
                     vm.error = "unable to update page";
                 }
@@ -36,8 +39,12 @@
         }
 
         function deletePage() {
-            PageService.deletePage(vm.pageId);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService
+                .deletePage(vm.pageId)
+                .then(function(page)
+                {
+                   $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                });
         }
     }
 })();

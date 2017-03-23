@@ -14,23 +14,38 @@
         return api;
 
         function findPageByWebsiteId(wid) {
-            return $http.get("/api/website/"+wid+"/page");
+            return $http.get("/api/website/"+wid+"/page")
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findPageById(pid) {
-            return $http.get("/api/page/"+pid);
+            return $http.get("/api/page/"+pid)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function updatePage(pageId,Newpage) {
-            return $http.put("/api/page/"+pageId,Newpage);
+            return $http.put("/api/page/"+pageId,Newpage)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function deletePage(pageId) {
-            return $http.delete("/api/page/"+pageId);
+            return $http.delete("/api/page/"+pageId)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function createPage(websiteId, page) {
-            return $http.post("/api/website/"+websiteId+"/page",page);
+            return $http.post("/api/website/"+websiteId+"/page",page)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     }
 })();

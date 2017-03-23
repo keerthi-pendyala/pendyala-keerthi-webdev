@@ -4,6 +4,8 @@
         .config(configuration);
 
     function configuration($routeProvider, $locationProvider,$httpProvider) {
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
         $routeProvider
             .when("/", {
                 templateUrl: "views/user/templates/login.view.client.html",
@@ -69,7 +71,11 @@
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: "WidgetEditController",
                 controllerAs: "model"
+            })
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid/search",{
+                templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
+                controller: "FlickrImageSearchController",
+                controllerAs: "model"
             });
     }
 })();
-

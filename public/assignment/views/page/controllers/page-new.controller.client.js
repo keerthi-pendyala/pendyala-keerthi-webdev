@@ -9,14 +9,16 @@
         vm.websiteId = $routeParams.wid;
         vm.createPage = createPage;
 
-        var promise = PageService.findPageByWebsiteId(vm.websiteId);
-        promise.success(function (pages) {
+        PageService
+            .findPageByWebsiteId(vm.websiteId)
+            .then(function (pages) {
             vm.pages = pages;
         });
 
         function createPage(page) {
-            var promise = PageService.createPage(vm.websiteId, page);
-            promise.success(function (pge) {
+            PageService
+                .createPage(vm.websiteId, page)
+                .then(function (pge) {
                 $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
             });
         }

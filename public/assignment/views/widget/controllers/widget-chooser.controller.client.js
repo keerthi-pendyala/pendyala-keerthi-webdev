@@ -11,19 +11,21 @@
         vm.createWidget = createWidget;
 
         function init() {
-            vm.widgets = WidgetService.findAllWidgetsForPage(vm.pageId);
+            WidgetService
+                .findAllWidgetsForPage(vm.pageId)
+                .then(function(widgets){
+                    vm.widgets =widgets;
+                });
         }
 
         init();
 
         function createWidget(widgetType) {
             var newWidget = {};
-            var random = (new Date()).getTime();
-            newWidget._id = random.toString();
-            newWidget.widgetType =widgetType;
+            newWidget.type =widgetType;
             WidgetService
                 .createWidget(vm.pageId,newWidget)
-                .success(function(widget){
+                .then(function(widget){
                     vm.widget=widget;
                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + vm.widget._id);
                  });

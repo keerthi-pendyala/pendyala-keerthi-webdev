@@ -8,27 +8,27 @@
             vm.register = register;
             vm.createUser = createUser;
 
+            function createUser(user) {
+                if(user.password === user.verifypassword) {
+                    UserService
+                        .createUser(user)
+                        .then(function (Newuser) {
+                            $location.url("/user/" + Newuser._id);
+                        });
+                }
+                else
+                    vm.error = "Passwords don't match, Try Again";
+            }
+
             function register(user) {
                 UserService
                     .findUserByUsername(user.username)
-                    .success(function (user) {
-                        vm.message = "Username is taken , Please use a different one";
-                    })
-                    .error(function (err) {
-                        vm.createUser(user);
-                    });
-            }
-
-            function createUser(user) {
-                UserService
-                    .createUser(user)
-                    .success(function (Newuser) {
-                        $location.url("/user/" + Newuser._id);
-                    })
-                    .error(function (err) {
-                        vm.error = "Passwords don't match, Try Again"
+                    .then(function (usr) {
+                        if(!usr)
+                            vm.createUser(user);
+                        else
+                            vm.message = "Username is taken , Please use a different one";
                     });
             }
         }
-    });
-
+    })();

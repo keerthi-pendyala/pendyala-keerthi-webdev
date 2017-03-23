@@ -21,26 +21,14 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <form>
-        <div class="form-group">
-            <label for="Name">Name</label>
-            <input type="text" class="form-control" id="Name" placeholder="Name">
-        </div>
-        <div class="form-group">
-            <label for="Description">Description</label>
-            <textarea ng-model="model.widget.text" rows="5" class="form-control" id="Description"
-                      placeholder="Description"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="size">Size</label>
-            <input ng-model="model.widget.size" type="text" class="form-control" id="size" value="3">
-        </div>
-    </form>
 
-    <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">Delete</a>
-
+<div ng-model="model.widget.text"
+     text-angular
+     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
 </div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

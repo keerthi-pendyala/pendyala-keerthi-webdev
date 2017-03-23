@@ -13,12 +13,12 @@
             vm.deleteWidget = deleteWidget;
             vm.getEditorTemplateUrl = getEditorTemplateUrl;
 
+
             function init() {
                 WidgetService
                     .findWidgetById(vm.widgetId)
-                    .success(function(widget){
+                    .then(function(widget){
                     vm.widget = widget;
-                    console.log(vm.widget);
                     });
             }
 
@@ -31,19 +31,20 @@
             }
 
             function deleteWidget() {
-                WidgetService.deleteWidget(vm.widgetId);
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                WidgetService
+                    .deleteWidget(vm.widgetId)
+            .then(function (widget) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
+                });
             }
 
             function updateWidget(newWidget) {
+                newWidget._page=vm.pageId;
                 WidgetService
                     .updateWidget(vm.widgetId, newWidget)
-                    .success(function(widget){
+                    .then(function(widget){
                         $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-                    })
-                    .error(function(err){
-                            vm.error = "unable to update widget";
-                })
+                    });
             }
         }
     })();
