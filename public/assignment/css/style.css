@@ -59,6 +59,7 @@ a,u{
 .kp-list-item{
     margin-top:10px;
     margin-bottom:10px;
+    cursor: pointer;
 }
 
 .kp-right-pane{
