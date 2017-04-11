@@ -1,0 +1,61 @@
+<body>
+<div class="container-fluid">
+<h1>
+    {{model.product.name}}
+</h1>
+    <div class="row container-fluid">
+    <div class="col-md-6 img-desc">
+        <img ng-src="https://image.tmdb.org/t/p/w500/{{model.product.backdrop_path}}" alt="No preview available"/>
+    </div>
+    <div class="col-md-6 youtube-widget">
+        <iframe width="100%" ng-src="{{model.getTrustedURL()}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
+    {{model.product.overview}}
+Number of episodes :: {{model.product.number_of_episodes}}
+Number of seasons  :: {{model.product.number_of_seasons}}
+Vote Avg :: {{model.product.vote_average}}
+Vote Count :: {{model.product.vote_count}}
+Home page :: {{model.product.homepage}}
+</div>
+
+<div class="form-group" ng-show="model.bid">
+    <a class="btn btn-success btn-block"
+       href="#/user/{{model.bid}}/search/{{model.pid}}/findstores">Find Stores Near you</a>
+</div>
+
+
+
+<div class="form-group" ng-show="model.sid">
+    <h1>Add this item to inventory</h1>
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <div ng-show="model.message" class="alert alert-danger" role="alert">
+        {{model.message}}
+    </div>
+
+    <h2>Product Description</h2>
+    <textarea ng-model="show.comments" rows="4"
+              class="form-control"
+              placeholder="The first 50 customers get a 25% off on the DVD.It is available in english and spanish">
+    </textarea>
+<div class="form-group">
+    <h2>Product Count</h2>
+    <input ng-model="show.count" type="number"
+           class="form-control"/>
+</div>
+<div class="form-group">
+    <a class="btn btn-primary btn-block"
+       ng-click="model.addShow(show)">
+        Add TV show to your inventory!
+    </a>
+    <div class="form-group">
+        <a class="btn btn-warning btn-block"
+           href="#/home">Home</a>
+    </div>
+</div>
+</div>
+</div>
+</body>

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/userlogin">
+            <span class="glyphicon glyphicon-ok">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/home">
+                    <b class="kp-navbar-text">TVTime</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="input-group">
+        <input ng-model="show.showname" type="text" class="form-control" placeholder="Search for TV shows!"/>
+        <span class="input-group-addon">
+            <a>
+               <i ng-click="model.getTVShows(show)" class="fa fa-search"></i>
+            </a>
+    </span>
+    </div>
+
+    <br/>
+
+    <div class="container-fluid">
+
+        <div ng-show="model.message" class="alert alert-danger" role="alert">
+            {{model.message}}
+        </div>
+
+        <div class="row container-fluid" ng-show="model.shows">
+            <div ng-repeat="showarr in model.shows">
+                <div class ="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-if="showarr.poster_path">
+                    <a href="#/user/search/{{showarr.id}}/{{model.uid}}">
+                        <img class="img-responsive thumbnail" ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}" alt="{{showarr.poster_path}}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row container-fluid" ng-hide="model.shows">
+            <div ng-repeat="showarr in model.tvshow">
+                <div class ="col-lg-3 col-md-3 col-sm-6 col-xs-12" ng-if="showarr.poster_path">
+                    <a href="#/user/search/{{showarr.id}}/{{model.uid}}">
+                        <img class="img-responsive thumbnail" ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}" alt="{{showarr.poster_path}}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+</div>

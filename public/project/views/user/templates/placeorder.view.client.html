@@ -1,0 +1,24 @@
+<body>
+<div ng-show="model.error" class="alert alert-danger" role="alert">
+    {{model.error}}
+</div>
+
+<div  ng-show="model.message" class="alert alert-success" role="alert">
+    {{model.message}}
+</div>
+
+<div class="container-fluid">
+    {{model.seller}}
+</div>
+
+
+<a class="btn btn-primary btn-block" ng-disabled="model.outofstock"
+   ng-click="model.confirmpurchase()">
+    Are u sure you want to purchase this item?
+</a>
+
+<a class="btn btn-primary btn-block" ng-show="model.outofstock"
+   href="#/user/{{model.bid}}/search/{{model.sid}}">
+    Go back to seller list!
+</a>
+

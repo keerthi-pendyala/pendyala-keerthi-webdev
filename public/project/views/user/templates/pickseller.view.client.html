@@ -1,0 +1,26 @@
+<body>
+<div class="container fluid">
+<div ng-repeat="seller in model.sellerinfo">
+<div class="w3-card-4">
+
+    <header class="w3-container w3-red">
+        <h3>{{seller.username}}</h3>
+    </header>
+
+    <div class="w3-container">
+        <p>{{seller.showcount}}</p>
+        <hr>
+        <img class = "avatar" src="http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg" alt="Avatar" class="w3-left w3-circle">
+        <p>..............</p>
+    </div>
+
+    <a href="#/user/{{model.uid}}/search/{{model.pid}}/findstores/{{seller._id}}">
+    <button class="w3-button w3-block w3-green">+ Buy</button>
+    </a>
+
+</div>
+</div>
+    <br/>
+</div>
+</div>
+</body>

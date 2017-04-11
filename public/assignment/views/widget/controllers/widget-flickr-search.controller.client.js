@@ -16,6 +16,7 @@
             FlickrService
                 .searchPhoto(searchTerm)
                 .then(function(response) {
+                    console.log(response);
                     var data = response.data.replace("jsonFlickrApi(","");
                     data = data.substring(0,data.length - 1);
                     data = JSON.parse(data);

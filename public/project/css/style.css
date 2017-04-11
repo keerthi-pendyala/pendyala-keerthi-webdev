@@ -1,0 +1,135 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 80px;
+    padding-bottom: 100px;
+    color: antiquewhite;
+    background-color: #121212;
+}
+
+a,u{
+    text-decoration: none !important;
+
+}
+
+.img-desc{
+    height:auto;
+    width:auto;
+}
+
+.img-responsive{
+    max-width:250px;
+    max-height:250px;
+}
+
+.thumbnail:hover{
+    background-color: darkred;
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.navbar{
+    background-color: black;
+    opacity:0.87;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height:60px;
+}
+
+.kp-navbar-text:hover{
+    font-weight: bold;
+    color: red;
+}
+
+img.avatar {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 150px;
+    width: 20%;
+    border-radius: 50%;
+}
+
+.w3-card-4{
+    background-color : black;
+}
+.kp-navbar-text{
+    font-family: 'Open Sans',serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: red;
+}
+
+.glyphicon{
+    color: white;
+}
+
+.glyphicon:hover{
+    color: red;
+}
+
+.kp-gly{
+    position: absolute;
+    right: 30px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.9;
+}
+
+
+.kp-gly-image{
+    z-index:2;
+    position :absolute;
+}
+
+.kp-list{
+    list-style-type:none;
+    padding-left:15px;
+}
+
+.kp-list-item{
+    margin-top:10px;
+    margin-bottom:10px;
+    cursor: pointer;
+}
+
+.kp-right-pane{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow-y: auto;
+}
+
+.kp-border{
+    border-left:1px solid lightslategrey;
+}
+
+.jga-toolbar {
+    position: absolute;
+    right: 30px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.7;
+    z-index : 2;
+}
+
+.youtube-widget iframe {
+    position: relative;
+    /*padding-bottom: 56.25%;*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
