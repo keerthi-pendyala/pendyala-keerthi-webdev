@@ -24,15 +24,15 @@ module.exports = function (app, model) {
     app.get("/api/users", findAllUsers);
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect: '/#/user',
-            failureRedirect: '/#/userlogin'
+            successRedirect: '/project/#/user',
+            failureRedirect: '/project/#/userlogin'
         }));
 
 
     var facebookConfig = {
-        clientID: 875058819300753,
-        clientSecret: "239d146bb3db07828981b6bdcd5c6a7d",
-        callbackURL: "http://127.0.0.1:3000/auth/facebook/callback"
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
     };
 
     passport.use('projectlocal', new LocalStrategy(localStrategy));
