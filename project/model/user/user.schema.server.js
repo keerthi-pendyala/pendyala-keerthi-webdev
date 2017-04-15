@@ -6,12 +6,19 @@ module.exports = function () {
         password: String,
         firstName: String,
         lastName: String,
-        type: {type:String,enum :['buyer', 'seller']},
+        type: {type:String,enum :['buyer', 'seller','admin']},
         email: String,
         phone: String,
         shows_forsale:[{showId:String,count:Number}],
         shows_bought:[{showId:String,count:Number}],
-    dateCreated:{type:Date,default:Date.now}
+        shows_liked:[String],
+        shows_wishlist:[String],
+        dateCreated:{type:Date,default:Date.now},
+        facebook : {
+            token : String,
+            id :String,
+            displayName : String
+        }
 },{collection: 'mongo.users'});
 
 return userSchema;

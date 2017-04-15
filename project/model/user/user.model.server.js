@@ -14,8 +14,14 @@ module.exports = function (model) {
         addShow: addShow,
         findUserByUserId: findUserByUserId,
         addTVShow: addTVShow,
+        findFacebookUser:findFacebookUser,
+        liketheshow:liketheshow,
+        undolike:undolike,
+        addtowishlist:addtowishlist,
+        removefromwishlist:removefromwishlist,
         // findAllUsers:findAllUsers
-        purchaseTVShow: purchaseTVShow
+        purchaseTVShow: purchaseTVShow,
+        findAllUsers:findAllUsers
     };
     return api;
 
@@ -75,6 +81,21 @@ module.exports = function (model) {
         return deferred.promise;
     }
 
+    function findAllUsers() {
+        var deferred = q.defer();
+        usermodel
+            .find()
+            .then(function (users, err) {
+                if (err)
+                    deferred.abort(err);
+                else {
+                    deferred.resolve(users);
+                }
+            });
+        return deferred.promise;
+    }
+
+
     function findUserByUsername(username) {
         var deferred = q.defer();
         usermodel
@@ -119,6 +140,51 @@ module.exports = function (model) {
         return deferred.promise;
     }
 
+    function liketheshow(userId,showId) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({_id: userId}, function (err, user) {
+                user.shows_liked.push(showId);
+                user.save();
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
+
+    function undolike(userId,showId) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({_id: userId}, function (err, user) {
+                var showindex = user.shows_liked.indexOf(showId);
+                user.shows_liked.splice(showindex, 1);
+                user.save();
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
+
+    function addtowishlist(userId,showId) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({_id: userId}, function (err, user) {
+                user.shows_wishlist.push(showId);
+                user.save();
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
+
+    function removefromwishlist(userId,showId) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({_id: userId}, function (err, user) {
+                var showindex = user.shows_wishlist.indexOf(showId);
+                user.shows_wishlist.splice(showindex, 1);
+                user.save();
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
 
     function addTVShow(sellerId, showId, show) {
         var deferred = q.defer();
@@ -153,6 +219,16 @@ module.exports = function (model) {
                     user.save();
                     deferred.resolve(user);
                 }
+            });
+        return deferred.promise;
+    }
+
+
+    function findFacebookUser(profileId) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({"facebook.id": profileId}, function (err, user) {
+                deferred.resolve(user);
             });
         return deferred.promise;
     }

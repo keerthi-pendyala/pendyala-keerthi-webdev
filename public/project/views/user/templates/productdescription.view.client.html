@@ -1,5 +1,23 @@
-<body>
 <div class="container-fluid">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a ng-hide ="model.uid" href="#/userlogin" class="btn btn-sm btn-primary">Login</a>
+                </a>
+            </div>
+            <div ng-show ="model.uid" class="navbar-text pull-right">
+                <a ng-click = "model.logout()" class="btn btn-sm btn-danger">Logout</a>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/show">
+                    <b class="kp-navbar-text">TVTime</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+
 <h1>
     {{model.product.name}}
 </h1>
@@ -20,8 +38,12 @@ Home page :: {{model.product.homepage}}
 </div>
 
 <div class="form-group" ng-show="model.bid">
+    <button ng-hide = "model.like" ng-click="model.liketheshow()" class="btn btn-block btn-primary"><i class="fa fa-thumbs-up">Like</i> </button>
+    <button ng-show = "model.like" ng-click="model.undolike()" class="btn btn-block btn-primary"><i class="fa fa-thumbs-down">Undo Like</i> </button>
+    <button ng-hide = "model.wish" ng-click="model.addtowishlist()" class="btn btn-block btn-danger"><i class="fa fa-heart-o" style="font-size:20px;color:black">Add to wishlist</i></button>
+    <button ng-show = "model.wish" ng-click="model.removefromwishlist()" class="btn btn-block btn-danger"><i class="fa fa-heart" style="font-size:20px;color:black">Remove from wishlist</i></button>
     <a class="btn btn-success btn-block"
-       href="#/user/{{model.bid}}/search/{{model.pid}}/findstores">Find Stores Near you</a>
+       href="#/user/search/{{model.pid}}/findstores">Find Stores Near you</a>
 </div>
 
 
@@ -46,6 +68,7 @@ Home page :: {{model.product.homepage}}
     <input ng-model="show.count" type="number"
            class="form-control"/>
 </div>
+
 <div class="form-group">
     <a class="btn btn-primary btn-block"
        ng-click="model.addShow(show)">
@@ -57,5 +80,17 @@ Home page :: {{model.product.homepage}}
     </div>
 </div>
 </div>
-</div>
-</body>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user">
+            <span class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            </a>
+        </div>
+    </div>
+</nav>

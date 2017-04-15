@@ -131,8 +131,13 @@ module.exports = function (app, model) {
                                             model.usermodel
                                                 .purchaseTVShow(buyerId, nshow)
                                                 .then(function (usr) {
-                                                    console.log("I am here" + usr);
-                                                    res.send(usr);
+                                                    model.trademodel
+                                                        .createTransfer(sellerId,buyerId,showId)
+                                                        .then(function (show) {
+                                                            res.send(show);
+                                                        }, function (err) {
+                                                            res.sendStatus(500).send(err);
+                                                        });
                                                 }, function (err) {
                                                     res.sendStatus(500).send(err);
                                                 });

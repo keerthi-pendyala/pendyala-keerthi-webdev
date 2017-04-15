@@ -11,6 +11,8 @@ module.exports = function (app) {
      widgetModel:widgetModel
      };
      */
-    require('./services/user.service.server.js')(app,model);
+   require('./services/user.service.server.js')(app,model);
     require('./services/show.service.server.js')(app,model);
+    require('./services/trade.service.server.js')(app,model);
+
 };

@@ -6,16 +6,25 @@
     function userloginController(userService, $location) {
         var vm = this;
         vm.login = login;
+        vm.logout = logout;
 
         function login(user) {
             userService
-                .findUserByCredentials(user.username, user.password)
-                .then(function(usr){
-                    if(!usr) {
-                        vm.error='User not found';
-                    }
-                    else
-                        $location.url('/user/' + usr._id);
+                .login(user)
+                .then(function (usr) {
+                    $location.url('/user');
+                }, function (err) {
+                    vm.error = 'User not found';
+                });
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function (res) {
+                    $location.url("/user");
+                },function (err) {
+                    $location.url("/userlogin");
                 });
         }
     }

@@ -6,15 +6,24 @@
     function userService($http) {
 
         var api = {
+            "login":login,
+            "logout":logout,
+            "loggedIn":loggedIn,
             "createUser": createUser,
             "deleteUser": deleteUser,
             "updateUser": updateUser,
+            "register":register,
+            "liketheshow":liketheshow,
+            "undolike":undolike,
            // "findAllUsers": findAllUsers,
             "findUserByCredentials": findUserByCredentials,
             "findUserByUserId": findUserByUserId,
             "findUserByUsername": findUserByUsername,
             "addShow": addShow,
-            "addTVShow":addTVShow
+            "addTVShow":addTVShow,
+            "addtowishlist":addtowishlist,
+            "removefromwishlist":removefromwishlist,
+            "findAllUsers":findAllUsers
           //  "purchaseTVShow":purchaseTVShow
          //   "createShow":createShow,
          //   "addSeller":addSeller,
@@ -26,6 +35,30 @@
         return api;
 
 
+        function login(User) {
+            return $http.post("/api/login", User)
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
+        }
+
+        function logout() {
+            return $http.post("/api/logout")
+                .then(function (response) {
+                    console.log(response);
+                    return response.data;
+                });
+        }
+
+        function loggedIn() {
+            return $http.get('/api/loggedIn')
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+
         function deleteUser(UserId) {
             return $http.delete('/api/user/'+UserId)
                 .then(function (response) {
@@ -33,12 +66,21 @@
                 });
         }
 
+
         function createUser(User) {
             return $http.post("/api/user", User)
                 .then(function (response) {
                     return response.data;
                 });
         }
+
+        function register(User) {
+            return $http.post("/api/register", User)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
 
         function findUserByUsername(Username) {
             return $http.get("/api/user?username="+Username)
@@ -120,6 +162,35 @@
 
         function addShow(sid,pid,show){
             return $http.post("/api/seller/"+sid+"/"+pid,show)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function liketheshow(bid,pid){
+            return $http.post("/api/like/"+bid+"/"+pid)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function undolike(bid,pid){
+            return $http.post("/api/undolike/"+bid+"/"+pid)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+
+        function addtowishlist(bid,pid){
+            return $http.post("/api/wishlist/"+bid+"/"+pid)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function removefromwishlist(bid,pid){
+            return $http.post("/api/removewish/"+bid+"/"+pid)
                 .then(function (response) {
                     return response.data;
                 });

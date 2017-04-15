@@ -1,4 +1,22 @@
-<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a ng-hide ="model.uid" href="#/userlogin" class="btn btn-sm btn-primary">Login</a>
+            </a>
+        </div>
+        <div ng-show ="model.uid" class="navbar-text pull-right">
+            <a ng-click = "model.logout()" class="btn btn-sm btn-danger">Logout</a>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/show">
+                <b class="kp-navbar-text">TVTime</b>
+            </a>
+        </div>
+    </div>
+</nav>
+
 <div ng-show="model.error" class="alert alert-danger" role="alert">
     {{model.error}}
 </div>
@@ -18,7 +36,20 @@
 </a>
 
 <a class="btn btn-primary btn-block" ng-show="model.outofstock"
-   href="#/user/{{model.bid}}/search/{{model.sid}}">
+   href="#/user/search/{{model.sid}}">
     Go back to seller list!
 </a>
-
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user">
+            <span class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            </a>
+        </div>
+    </div>
+</nav>

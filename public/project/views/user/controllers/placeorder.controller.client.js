@@ -3,10 +3,13 @@
         .module("SoapOperaWorld")
         .controller("placeorderController", placeorderController);
 
-    function placeorderController(userService,showService, $routeParams) {
+    function placeorderController(userService,$location,showService,$rootScope, checkUser) {
         var vm = this;
         vm.sid = $routeParams['sid'];
-        vm.bid = $routeParams['bid'];
+        vm.logout = logout;
+        if(checkUser)
+            vm.uid = checkUser._id;
+
         vm.pid = $routeParams['pid'];
         vm.confirmpurchase = confirmpurchase;
         vm.outofstock = false;
@@ -25,6 +28,16 @@
         }
 
         init();
+
+        function logout() {
+            userService
+                .logout()
+                .then(function (res) {
+                    $location.url("/user");
+                },function (err) {
+                    $location.url("/userlogin");
+                });
+        }
 
 
 

@@ -3,10 +3,11 @@
         .module("SoapOperaWorld")
         .controller("searchController", searchController);
 
-    function searchController(showService,$routeParams) {
+    function searchController(showService,checkUser,$routeParams) {
         var vm = this;
         vm.getTVShows=getTVShows;
-        vm.bid = $routeParams['bid'];
+        if(checkUser)
+            vm.uid = checkUser._id;
 
         function getTVShows(show) {
             showService

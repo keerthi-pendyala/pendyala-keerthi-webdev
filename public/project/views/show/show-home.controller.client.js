@@ -3,9 +3,13 @@
         .module("SoapOperaWorld")
         .controller("homeController", homeController);
 
-    function homeController(showService,$routeParams) {
+    function homeController(checkUser,showService,userService,$location,$routeParams) {
         var vm = this;
-        vm.uid = $routeParams['uid'];
+        vm.logout=logout;
+
+        if(checkUser)
+            vm.uid = checkUser._id;
+
         vm.getTVShows=getTVShows;
 
         function init() {
@@ -27,6 +31,16 @@
                 .getTVShows(show)
                 .then(function (response) {
                     vm.shows = response.results;
+                });
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function (res) {
+                    $location.url("/user");
+                },function (err) {
+                    $location.url("/userlogin");
                 });
         }
 

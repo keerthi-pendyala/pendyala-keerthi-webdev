@@ -1,0 +1,70 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+            <a>
+            <span id="open" ng-click="model.openNav()" class="glyphicon glyphicon-th pull-left">
+            </span>
+            </a>
+            <a class="navbar-brand" href="#/show">
+                <b class="kp-navbar-text pull-right">TVTime</b>
+            </a>
+
+        </div>
+    </nav>
+
+    <div class="alert alert-danger" ng-show="model.error">
+        {{model.error}}
+    </div>
+
+
+    <div class="alert alert-success" ng-show="model.message">
+        {{model.message}}
+    </div>
+
+
+    <div id="mySidenav" class="sidenav">
+      <a>
+      <span ng-click="model.closeNav()" class="glyphicon glyphicon-remove pull-right">
+            </span>
+      </a>
+        <div ng-show="model.sid">
+            <a href="#/seller/forsale">Inventory</a>
+            <a href="#/seller/trade">Trade</a>
+        </div>
+    </div>
+
+    <div id="main">
+            <div ng-repeat="show in model.shows_info">
+                <div class ="row">
+                <div class="col-xs-4 hidden-xs">
+                <a href ="#/user/search/{{show.id}}">
+                    <img ng-src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}" class="img-circle" alt="Cinque Terre" width="275" height="250">
+                </a>
+                </div>
+                <div class="col-xs-8">
+                    <a href ="#/user/search/{{show.id}}">
+                <h1>{{show.name}}</h1>
+                    </a>
+                </div>
+                </div>
+                <br/>
+            </div>
+        </ul>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user">
+            <span class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            </a>
+        </div>
+    </div>
+</nav>
+

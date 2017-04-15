@@ -15,7 +15,7 @@
     <div class="row container-fluid">
     <div ng-repeat="showarr in model.shows">
         <div class ="col-lg-3 col-md-3 cold-sm-6 col-xs-12" ng-if="showarr.poster_path">
-           <a href="#/user/{{model.uid}}/search/{{showarr.id}}">
+           <a href="#/user/search/{{showarr.id}}">
             <img class="img-responsive thumbnail" ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}" alt="{{showarr.poster_path}}"/>
            </a>
            <!-- {{showarr.name}} -->
@@ -24,3 +24,17 @@
     </div>
 
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user">
+            <span class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            </a>
+        </div>
+    </div>
+</nav>

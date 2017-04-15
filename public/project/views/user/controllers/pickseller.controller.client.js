@@ -3,9 +3,13 @@
         .module("SoapOperaWorld")
         .controller("picksellerController", picksellerController);
 
-    function picksellerController(userService,showService,$routeParams) {
+    function picksellerController(userService,showService,$location,$rootScope,checkUser) {
         var vm = this;
-        vm.uid=$routeParams['bid'];
+        vm.logout = logout;
+        if(checkUser)
+            vm.uid = checkUser._id;
+
+
         vm.pid=$routeParams['pid'];
 
         function init() {
@@ -35,5 +39,15 @@
                 });
         }
         init();
+
+        function logout() {
+            userService
+                .logout()
+                .then(function (res) {
+                    $location.url("/user");
+                },function (err) {
+                    $location.url("/userlogin");
+                });
+        }
     }
 })();

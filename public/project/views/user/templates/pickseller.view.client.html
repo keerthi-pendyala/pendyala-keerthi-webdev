@@ -1,5 +1,22 @@
-<body>
+
 <div class="container fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a ng-hide ="model.uid" href="#/userlogin" class="btn btn-sm btn-primary">Login</a>
+                </a>
+            </div>
+            <div ng-show ="model.uid" class="navbar-text pull-right">
+                <a ng-click = "model.logout()" class="btn btn-sm btn-danger">Logout</a>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/show">
+                    <b class="kp-navbar-text">TVTime</b>
+                </a>
+            </div>
+        </div>
+    </nav>
 <div ng-repeat="seller in model.sellerinfo">
 <div class="w3-card-4">
 
@@ -14,7 +31,7 @@
         <p>..............</p>
     </div>
 
-    <a href="#/user/{{model.uid}}/search/{{model.pid}}/findstores/{{seller._id}}">
+    <a href="#/user/search/{{model.pid}}/findstores/{{seller._id}}">
     <button class="w3-button w3-block w3-green">+ Buy</button>
     </a>
 
@@ -22,5 +39,17 @@
 </div>
     <br/>
 </div>
-</div>
-</body>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user">
+            <span class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            </a>
+        </div>
+    </div>
+</nav>

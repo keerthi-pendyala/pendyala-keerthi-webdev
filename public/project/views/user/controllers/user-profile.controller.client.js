@@ -3,11 +3,16 @@
         .module("SoapOperaWorld")
         .controller("userprofileController", userprofileController);
 
-    function userprofileController($routeParams,$location, userService) {
+    function userprofileController(loggedIn,$location, userService) {
         var vm = this;
-        vm.userId = $routeParams['uid'];
+        if(loggedIn)
+            vm.userId=loggedIn._id;
+
         vm.update = update;
         vm.deleteUser = deleteUser;
+        vm.logout = logout;
+        vm.openNav=openNav;
+        vm.closeNav=closeNav;
 
         function init() {
             userService
@@ -15,6 +20,16 @@
                 .then(renderUser);
         }
         init();
+
+        function logout(){
+            userService
+                .logout()
+                .then(function (response) {
+                    $location.url('/userlogin');
+                },function(){
+                    $location.url('/userlogin');
+                });
+        }
 
         function update(newuser) {
             userService
@@ -29,6 +44,12 @@
 
         function renderUser(user) {
             vm.user = user;
+            if(vm.user.type === "buyer")
+                vm.bid = vm.userId;
+            if(vm.user.type === "seller")
+                vm.sid = vm.userId;
+            if(vm.user.type === "admin")
+                vm.aid = vm.userId;
         }
 
         function deleteUser() {
@@ -40,7 +61,16 @@
                         $location.url('/userlogin');
                     }
                 });
-        };
+        }
 
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
     }
 })();

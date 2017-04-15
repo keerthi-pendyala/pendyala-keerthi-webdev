@@ -3,12 +3,19 @@
         .module("SoapOperaWorld")
         .controller("productdescriptionController", productdescriptionController);
 
-    function productdescriptionController(showService,userService,$routeParams,$sce) {
+    function productdescriptionController(showService,checkUser,userService,$location,$routeParams,$sce) {
         var vm = this;
-        vm.uid=$routeParams['uid'];
+        if(checkUser)
+            vm.uid = checkUser._id;
+
         vm.pid=$routeParams['pid'];
         vm.getTrustedURL=getTrustedURL;
         vm.addShow=addShow;
+        vm.logout = logout;
+        vm.liketheshow = liketheshow;
+        vm.undolike = undolike;
+        vm.addtowishlist=addtowishlist;
+        vm.removefromwishlist=removefromwishlist;
 
         function init() {
             showService
@@ -16,13 +23,20 @@
                 .then(function(product){
                     vm.product=product;
                 });
+            showService
+                .findShowByShowId(vm.pid)
+                .then(function (show) {
+                    vm.show = show;
+                });
+
             if(vm.uid)
             {
                 userService
                     .findUserByUserId(vm.uid)
                     .then(function(user){
+                        vm.like=false;
+                        vm.wish=false;
                         vm.user=user;
-                        console.log(vm.user);
                         if(vm.user.type === "buyer")
                         {
                             vm.bid = vm.user._id;
@@ -31,14 +45,22 @@
                         {
                             vm.sid = vm.user._id;
                         }
+                        for(i=0;i<user.shows_liked.length;i++)
+                        {
+                            if(user.shows_liked[i] === vm.pid)
+                                vm.like=true;
+                        }
+                        for(i=0;i<user.shows_wishlist.length;i++)
+                        {
+                            if(user.shows_wishlist[i] === vm.pid)
+                                vm.wish=true;
+                        }
+
                     });
             }
 
-            showService
-                .findShowByShowId(vm.pid)
-                .then(function (show) {
-                    vm.show = show;
-                });
+
+
         }
         init();
 
@@ -61,6 +83,48 @@
                     {
                         vm.message = "Show  added to inventory";
                     }
+                });
+        }
+
+        function liketheshow(){
+            userService
+                .liketheshow(vm.bid,vm.pid)
+                .then(function (res) {
+                   vm.like = true;
+                });
+        }
+
+        function undolike(){
+            userService
+                .undolike(vm.bid,vm.pid)
+                .then(function (res) {
+                    vm.like = false;
+                });
+        }
+
+        function addtowishlist(){
+            userService
+                .addtowishlist(vm.bid,vm.pid)
+                .then(function (res) {
+                    vm.wish = true;
+                });
+        }
+
+        function removefromwishlist(){
+            userService
+                .removefromwishlist(vm.bid,vm.pid)
+                .then(function (res) {
+                    vm.wish = false;
+                });
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function (res) {
+                    $location.url("/user");
+                },function (err) {
+                    $location.url("/userlogin");
                 });
         }
 

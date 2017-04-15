@@ -7,18 +7,7 @@
         var vm = this;
         vm.register = register;
         vm.createUser = createUser;
-
-        function createUser(user) {
-            if(user.password === user.verifypassword) {
-                userService
-                    .createUser(user)
-                    .then(function (Newuser) {
-                        $location.url("/user/" + Newuser._id);
-                    });
-            }
-            else
-                vm.error = "Passwords don't match, Try Again";
-        }
+        vm.logout = logout;
 
         function register(user) {
             userService
@@ -30,5 +19,28 @@
                         vm.message = "Username is taken , Please use a different one";
                 });
         }
+
+        function createUser(user) {
+            if(user.password === user.verifypassword) {
+                userService
+                    .register(user)
+                    .then(function (Newuser) {
+                        $location.url("/user");
+                    });
+            }
+            else
+                vm.error = "Passwords don't match, Try Again";
+        }
+
+        function logout() {
+            userService
+                .logout()
+                .then(function (res) {
+                    $location.url("/user");
+                },function (err) {
+                    $location.url("/userlogin");
+                });
+        }
+
     }
 })();
