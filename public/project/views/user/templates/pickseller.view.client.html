@@ -12,13 +12,15 @@
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/show">
-                    <b class="kp-navbar-text">TVTime</b>
+                    <b class="kp-navbar-text">S.O.W</b>
                 </a>
             </div>
         </div>
     </nav>
-<div ng-repeat="seller in model.sellerinfo">
-<div class="w3-card-4">
+
+    <div id="body-div">
+    <div ng-repeat="seller in model.sellerinfo">
+    <div class="w3-card-4">
 
     <header class="w3-container w3-red">
         <h3>{{seller.username}}</h3>
@@ -38,6 +40,7 @@
 </div>
 </div>
     <br/>
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

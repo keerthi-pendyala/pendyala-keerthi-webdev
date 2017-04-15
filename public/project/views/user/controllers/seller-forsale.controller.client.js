@@ -9,14 +9,19 @@
         vm.closeNav=closeNav;
         vm.getShowsInfo=getShowsInfo;
         if(loggedIn)
-            vm.bid=loggedIn._id;
+            vm.sid=loggedIn._id;
 
         function init() {
             userService
                 .findUserByUserId(vm.sid)
                 .then(function (seller) {
                     vm.shows_forsale = seller.shows_forsale;
-                    vm.getShowsInfo(vm.shows_forsale);
+                    if (vm.shows_forsale.length === 0) {
+                        vm.message = "No shows to display"
+                    }
+                    else {
+                        vm.getShowsInfo(vm.shows_forsale);
+                    }
                 });
         }
         init();

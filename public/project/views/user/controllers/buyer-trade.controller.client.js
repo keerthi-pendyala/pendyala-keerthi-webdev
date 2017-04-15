@@ -15,7 +15,7 @@
                 .findTradeByBuyerId(vm.bid)
                 .then(function (buyerTrade) {
                     vm.buyerTrade = buyerTrade;
-                    if (buyerTrade.length === 0) {
+                    if (vm.buyerTrade.length === 0) {
                         vm.message = "No shows to display"
                     }
                     else {

@@ -16,7 +16,12 @@
                 .findUserByUserId(vm.bid)
                 .then(function (buyer) {
                     vm.shows_liked = buyer.shows_liked;
-                    vm.getShowsInfo(vm.shows_liked);
+                    if (vm.shows_liked.length === 0) {
+                        vm.message = "No shows to display"
+                    }
+                    else {
+                        vm.getShowsInfo(vm.shows_liked);
+                    }
                 });
         }
         init();

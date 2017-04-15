@@ -16,7 +16,12 @@
                 .findUserByUserId(vm.bid)
                 .then(function (buyer) {
                     vm.shows_wishlist = buyer.shows_wishlist;
-                    vm.getShowsInfo(vm.shows_wishlist);
+                    if (vm.shows_wishlist.length === 0) {
+                        vm.message = "No shows to display"
+                    }
+                    else {
+                        vm.getShowsInfo(vm.shows_wishlist);
+                    }
                 });
         }
         init();

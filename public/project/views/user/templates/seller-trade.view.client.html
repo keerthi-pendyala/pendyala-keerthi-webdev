@@ -7,20 +7,11 @@
             </span>
             </a>
             <a class="navbar-brand" href="#/show">
-                <b class="kp-navbar-text pull-right">TVTime</b>
+                <b class="kp-navbar-text pull-right">S.O.W</b>
             </a>
 
         </div>
     </nav>
-
-    <div class="alert alert-danger" ng-show="model.error">
-        {{model.error}}
-    </div>
-
-
-    <div class="alert alert-success" ng-show="model.message">
-        {{model.message}}
-    </div>
 
 
     <div id="mySidenav" class="sidenav">
@@ -34,8 +25,17 @@
         </div>
     </div>
 
-    <div id="main">
-        <div class="container-fluid" ng-hide="model.message">
+    <div id="body-div">
+        <div id="main">
+            <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
+            </div>
+
+
+            <div class="alert alert-success" ng-show="model.message">
+                {{model.message}}
+            </div>
+        <div ng-hide="model.message">
             <table class="table table-responsive">
                 <thead>
                 <tr>
@@ -61,6 +61,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

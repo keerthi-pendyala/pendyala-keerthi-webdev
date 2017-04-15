@@ -8,7 +8,7 @@
         vm.sid = $routeParams['sid'];
         vm.logout = logout;
         if(checkUser)
-            vm.uid = checkUser._id;
+            vm.bid = checkUser._id;
 
         vm.pid = $routeParams['pid'];
         vm.confirmpurchase = confirmpurchase;

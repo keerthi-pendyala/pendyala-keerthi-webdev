@@ -16,7 +16,10 @@
             "getSellers":getSellers,
             "addSeller":addSeller,
             "removeSeller":removeSeller,
-            "purchaseTVShow":purchaseTVShow
+            "purchaseTVShow":purchaseTVShow,
+            "getTrailer":getTrailer,
+            "getCredits":getCredits,
+            "getSimilarShows":getSimilarShows
         };
         return api;
 
@@ -64,9 +67,6 @@
                 });
         }
 
-
-
-
         function removeSeller(sid,pid) {
             return $http.delete("/api/seller/"+sid+"/"+pid)
                 .then(function (response) {
@@ -104,13 +104,42 @@
         }
 
         function findProductById(pid) {
-            console.log("Reached service");
             var key = "53b51c871dad98d0c04e5b6c841e5240";
             var urlBase = "https://api.themoviedb.org/3/tv/TEXT?api_key=KEY&language=en-US";
             var url = urlBase.replace("KEY", key).replace("TEXT", pid);
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
+                });
+        }
+
+        function getTrailer(pid) {
+            var key = "53b51c871dad98d0c04e5b6c841e5240";
+            var urlBase = "https://api.themoviedb.org/3/tv/TEXT/videos?api_key=KEY&language=en-US";
+            var url = urlBase.replace("KEY", key).replace("TEXT", pid);
+            return $http.get(url)
+                .then(function (response) {
+                    return(response.data);
+                });
+        }
+
+        function getCredits(pid) {
+            var key = "53b51c871dad98d0c04e5b6c841e5240";
+            var urlBase = "https://api.themoviedb.org/3/tv/TEXT/credits?api_key=KEY&language=en-US";
+            var url = urlBase.replace("KEY", key).replace("TEXT", pid);
+            return $http.get(url)
+                .then(function (response) {
+                    return(response.data);
+                });
+        }
+
+        function getSimilarShows(pid) {
+            var key = "53b51c871dad98d0c04e5b6c841e5240";
+            var urlBase = "https://api.themoviedb.org/3/tv/TEXT/similar?api_key=KEY&language=en-US&page=1";
+            var url = urlBase.replace("KEY", key).replace("TEXT", pid);
+            return $http.get(url)
+                .then(function (response) {
+                    return(response.data);
                 });
         }
 

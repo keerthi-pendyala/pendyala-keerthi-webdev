@@ -22,7 +22,28 @@
                 .findProductById(vm.pid)
                 .then(function(product){
                     vm.product=product;
+
                 });
+            showService
+                .getTrailer(vm.pid)
+                .then(function(video){
+                    vm.videoresults=video.results;
+                    vm.showTrailerid=vm.videoresults[0].key;
+                });
+
+            showService
+                .getSimilarShows(vm.pid)
+                .then(function(shows_similar){
+                    vm.shows_similar=shows_similar.results;
+                });
+
+            showService
+                .getCredits(vm.pid)
+                .then(function(credits){
+                    vm.cast=credits.cast;
+                    console.log(vm.cast);
+                });
+
             showService
                 .findShowByShowId(vm.pid)
                 .then(function (show) {
@@ -64,13 +85,11 @@
         }
         init();
 
-        function getTrustedURL() {
-            var id="lGTOru7pwL8";
+
+        function getTrustedURL(id) {
             var url = "https://www.youtube.com/embed/" + id;
             return $sce.trustAsResourceUrl(url);
         }
-
-
 
         function addShow(newshow){
             userService
@@ -85,6 +104,7 @@
                     }
                 });
         }
+
 
         function liketheshow(){
             userService

@@ -8,7 +8,7 @@
         vm.openNav=openNav;
         vm.closeNav=closeNav;
         if(loggedIn)
-            vm.bid=loggedIn._id;
+            vm.aid=loggedIn._id;
 
         function init() {
             userService

@@ -8,14 +8,14 @@
         vm.openNav = openNav;
         vm.closeNav = closeNav;
         if(loggedIn)
-            vm.bid=loggedIn._id;
+            vm.sid=loggedIn._id;
 
         function init() {
             tradeService
                 .findTradeBySellerId(vm.sid)
                 .then(function (sellerTrade) {
                     vm.sellerTrade = sellerTrade;
-                    if (sellerTrade.length === 0) {
+                    if (vm.sellerTrade.length === 0) {
                         vm.message = "No shows to display"
                     }
                     else {

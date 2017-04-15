@@ -1,5 +1,4 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-default navbar-fixed-top">
+ <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-text pull-right">
                 <a ng-hide ="model.uid" href="#/userlogin" class="btn btn-sm btn-primary">Login</a>
@@ -11,20 +10,22 @@
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/show">
-                    <b class="kp-navbar-text">TVTime</b>
+                    <b class="kp-navbar-text">S.O.W</b>
                 </a>
             </div>
         </div>
-    </nav>
+ </nav>
+ <div ng-show="model.error" class="alert alert-danger" role="alert">
+     {{model.error}}
+ </div>
+
+ <div ng-show="model.message" class="alert alert-danger" role="alert">
+     {{model.message}}
+ </div>
+
+ <div class="body-div">
+ <div class="container-fluid">
     <h1>Register</h1>
-
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
-    </div>
-
-    <div ng-show="model.message" class="alert alert-danger" role="alert">
-        {{model.message}}
-    </div>
 
     <div class="form-group">
         <img class="avatar form-group" ng-src="{{img_avatar}}" onerror="this.src='https://cdn.pixabay.com/photo/2016/11/08/15/21/user-1808597_960_720.png'"/>
@@ -102,13 +103,13 @@
     <div class="form-group">
         <select class="form-control" ng-model="user.type">
             <option value="" disabled selected>What are you here for?</option>
-            <option value="buyer">Just Browsing, might buy a tvshow DVD</option>
-            <option value="seller">Need to sell TV show DVDs that I own</option>
+            <option value="buyer">Buyer</option>
+            <option value="seller">Seller</option>
         </select>
     </div>
-
     <a ng-click="model.register(user)"
        class="btn btn-primary btn-block">Register</a>
     <a class="btn btn-danger  btn-block"
        href="#/userlogin">Cancel</a>
-</div>
+ </div>
+ </div>

@@ -9,14 +9,14 @@
         vm.closeNav=closeNav;
 
         if(loggedIn)
-            vm.bid=loggedIn._id;
+            vm.aid=loggedIn._id;
 
         function init() {
             tradeService
                 .findAllTrades()
                 .then(function (trades) {
                     vm.trades = trades;
-                    if (trades.length === 0) {
+                    if (vm.trades.length === 0) {
                         vm.message = "No trades between buyer and seller yet"
                     }
                     else {
