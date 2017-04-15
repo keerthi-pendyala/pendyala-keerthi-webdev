@@ -3,7 +3,7 @@
         .module("SoapOperaWorld")
         .controller("picksellerController", picksellerController);
 
-    function picksellerController(userService,showService,$location,$rootScope,checkUser) {
+    function picksellerController(userService,showService,$location,$routeParams,checkUser) {
         var vm = this;
         vm.logout = logout;
         if(checkUser)

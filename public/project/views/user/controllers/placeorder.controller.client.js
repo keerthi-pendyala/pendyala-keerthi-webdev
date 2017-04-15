@@ -3,7 +3,7 @@
         .module("SoapOperaWorld")
         .controller("placeorderController", placeorderController);
 
-    function placeorderController(userService,$location,showService,$rootScope, checkUser) {
+    function placeorderController(userService,$location,showService,$routeParams, checkUser) {
         var vm = this;
         vm.sid = $routeParams['sid'];
         vm.logout = logout;

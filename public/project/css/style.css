@@ -57,6 +57,10 @@ h6{
     transform: scale3d(1.1,1.1,1.1);
 }
 
+#money{
+    color:black;
+}
+
 .navbar{
     background-color: black;
     opacity:0.87;
