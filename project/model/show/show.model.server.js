@@ -131,19 +131,23 @@ module.exports = function (model) {
                             });
                     }
                     else {
+
                         //when show exists update total show count
                         show.count += nshow.count;
-
+                        console.log(show.count);
                         for (var i = 0; i < show.sellers.length; i++) {
                             if (show.sellers[i] === sellerId) {
                                 exists = true;
                             }
                         }
                             if (exists === false) {
+                                console.log("man");
                                 show.sellers.push(sellerId);
                             }
+                        console.log("tan");
 
-                            show.save();
+
+                        show.save();
                             deferred.resolve(show);
                         }
                     }

@@ -38,7 +38,6 @@
         function login(User) {
             return $http.post("/api/login", User)
                 .then(function (response) {
-                    console.log(response);
                     return response.data;
                 });
         }
@@ -46,7 +45,6 @@
         function logout() {
             return $http.post("/api/logout")
                 .then(function (response) {
-                    console.log(response);
                     return response.data;
                 });
         }
@@ -197,6 +195,7 @@
         }
 
         function addTVShow(pid,sid,show){
+            console.log(pid,sid,show);
             return $http.post("/api/seller/show/"+sid+"/"+pid,show)
                 .then(function (response) {
                     return response.data;

@@ -41,7 +41,7 @@
                 .getCredits(vm.pid)
                 .then(function(credits){
                     vm.cast=credits.cast;
-                    console.log(vm.cast);
+                    // console.log(vm.cast);
                 });
 
             showService

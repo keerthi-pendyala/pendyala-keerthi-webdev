@@ -119,7 +119,6 @@ module.exports = function (app, model) {
                             model.usermodel
                                 .updateUser(sellerId, newseller)
                                 .then(function (usr) {
-                                    console.log(usr);
                                     var newshow = cshow;
                                     newshow.count -= 1;
                                     //update the show table by decrementing overall count

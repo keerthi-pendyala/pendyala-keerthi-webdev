@@ -17,6 +17,7 @@
                 .getSellers(vm.pid)
                 .then(function(sellers){
                     vm.sellers= sellers;
+                    console.log(vm.sellers);
                     vm.sellerinfo=[];
                     for(var i=0;i<vm.sellers.length;i++)
                     {
@@ -24,6 +25,7 @@
                             .findUserByUserId(vm.sellers[i])
                             .then(function (sellerin)
                             {
+                                console.log(sellerin);
                                 for(var j=0;j<sellerin.shows_forsale.length;j++)
                                 {
                                       if(sellerin.shows_forsale[j].showId === vm.pid)
@@ -34,6 +36,7 @@
                                 vm.sellerinfo.push(nseller);
                             });
                     }
+                    console.log(vm.sellerinfo);
                 },function (err){
                   vm.error = "Movie is currently Out of Stock , please try again"
                 });

@@ -266,7 +266,6 @@ module.exports = function (model) {
                             if (err)
                                 deferred.abort(err);
                             else {
-                                console.log("I am here" + user);
                                 deferred.resolve(user);
                             }
                         });

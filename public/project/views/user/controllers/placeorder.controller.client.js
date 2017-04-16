@@ -9,7 +9,6 @@
         vm.logout = logout;
         if(checkUser)
             vm.bid = checkUser._id;
-
         vm.pid = $routeParams['pid'];
         vm.confirmpurchase = confirmpurchase;
         vm.outofstock = false;

@@ -24,7 +24,7 @@
         <!--</h1>-->
         <div class="container-fluid">
             <div class="col-sm-4">
-                <img class="img-rounded img-pos"
+                <img class="img-rounded img-pos img-poster"
                      ng-src="https://image.tmdb.org/t/p/w500/{{model.product.backdrop_path}}"
                      alt="No preview available"/>
             </div>
@@ -148,14 +148,13 @@
                         <img class="img-responsive thumbnail"
                              ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
                              alt="{{showarr.poster_path}}"/>
-                        <p>{{showarr.name}}</p>
+                        <p class="img-text">{{showarr.name}}</p>
                     </a>
                     <br/>
                 </div>
             </div>
-
-        </div>
     </div>
+</div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <div class="navbar-text pull-right">
@@ -170,4 +169,3 @@
             </div>
         </div>
     </nav>
-</div>
