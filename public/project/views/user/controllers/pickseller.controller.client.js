@@ -16,8 +16,8 @@
             showService
                 .getSellers(vm.pid)
                 .then(function(sellers){
+                    console.log(sellers);
                     vm.sellers= sellers;
-                    console.log(vm.sellers);
                     vm.sellerinfo=[];
                     for(var i=0;i<vm.sellers.length;i++)
                     {
@@ -36,7 +36,6 @@
                                 vm.sellerinfo.push(nseller);
                             });
                     }
-                    console.log(vm.sellerinfo);
                 },function (err){
                   vm.error = "Movie is currently Out of Stock , please try again"
                 });

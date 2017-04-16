@@ -105,7 +105,6 @@ module.exports = function (app, model) {
     }
 
     function loggedIn(req, res) {
-        console.log(req.user);
         res.send(req.isAuthenticated() ? req.user : '0');
 
     }

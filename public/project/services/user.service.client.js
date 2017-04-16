@@ -195,7 +195,6 @@
         }
 
         function addTVShow(pid,sid,show){
-            console.log(pid,sid,show);
             return $http.post("/api/seller/show/"+sid+"/"+pid,show)
                 .then(function (response) {
                     return response.data;

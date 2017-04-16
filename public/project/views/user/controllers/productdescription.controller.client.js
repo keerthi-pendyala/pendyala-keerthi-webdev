@@ -28,6 +28,7 @@
                 .getTrailer(vm.pid)
                 .then(function(video){
                     vm.videoresults=video.results;
+                    if(vm.videoresults)
                     vm.showTrailerid=vm.videoresults[0].key;
                 });
 

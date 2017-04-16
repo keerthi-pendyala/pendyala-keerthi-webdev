@@ -35,9 +35,11 @@ module.exports = function (app, model) {
 
     function getSellers(req, res) {
         var showId = req.params['showId'];
+        console.log(showId);
         model.showmodel
             .findShowByShowId(showId)
             .then(function (show) {
+                console.log(show);
                 res.send(show.sellers);
             }, function (err) {
                 res.sendStatus(500).send(err);
