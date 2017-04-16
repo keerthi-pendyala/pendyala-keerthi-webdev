@@ -45,127 +45,127 @@
 
                 <br/>
                 <div class="form-group" ng-show="model.sid">
-                        <input id ="money" ng-model="model.show.count" type="number" name="quantity">
-                        <a class="btn btn-primary btn-circle"
-                           ng-click="model.addShow(model.show)">
-                            <i class="fa fa-money" aria-hidden="true"></i>
-                        </a>
-                        <div ng-show="model.error" class="alert alert-danger" role="alert">
-                            {{model.error}}
-                        </div>
-
-                        <div ng-show="model.message" class="alert alert-danger" role="alert">
-                            {{model.message}}
-                        </div>
-                    </div>
-                    <div ng-show="model.bid">
-                        <a href="#/show">
-                            <button class="btn btn-circle btn-warning"><i class="fa fa-reply-all"
-                                                                          aria-hidden="true"></i></i></button>
-                        </a>
-                        <button ng-hide="model.like" ng-click="model.liketheshow()" class="btn btn-circle btn-info">
-                            <i
-                                    class="fa fa-thumbs-up"></i></button>
-                        <button ng-show="model.like" ng-click="model.undolike()" class="btn btn-circle btn-info"><i
-                                class="fa fa-thumbs-down"></i></button>
-                        <button ng-hide="model.wish" ng-click="model.addtowishlist()"
-                                class="btn btn-circle btn-danger"><i
-                                class="fa fa-heart-o"></i></button>
-                        <button ng-show="model.wish" ng-click="model.removefromwishlist()"
-                                class="btn btn-circle btn-danger"><i
-                                class="fa fa-heart"></i></button>
-                        <a class="btn btn-success btn-sm"
-                           href="#/user/search/{{model.pid}}/findstores">Find Stores</a>
-                    </div>
-                    <br/>
-
-
-                </div>
-                <div class="youtube-widget col-sm-5">
-                    <iframe width="100%" ng-src="{{model.getTrustedURL(model.showTrailerid)}}"
-                            frameborder="0"></iframe>
-                </div>
-            </div>
-
-            <br/>
-
-            <!--<div class="form-group" ng-show="model.bid">-->
-            <!--<button ng-hide="model.like" ng-click="model.liketheshow()" class="btn btn-sm btn-info"><i-->
-            <!--class="fa fa-thumbs-up">Like</i></button>-->
-            <!--<button ng-show="model.like" ng-click="model.undolike()" class="btn btn-sm btn-info"><i-->
-            <!--class="fa fa-thumbs-down">Undo Like</i></button>-->
-            <!--<button ng-hide="model.wish" ng-click="model.addtowishlist()" class="btn btn-sm btn-danger"><i-->
-            <!--class="fa fa-heart-o">Wish</i></button>-->
-            <!--<button ng-show="model.wish" ng-click="model.removefromwishlist()" class="btn btn-sm btn-danger"><i-->
-            <!--class="fa fa-heart">Remove Wish</i></button>-->
-            <!--<a class="btn btn-success btn-sm"-->
-            <!--href="#/user/search/{{model.pid}}/findstores">Find Stores Near you</a>-->
-            <!--</div>-->
-
-            <h3>About
-                <i class="fa fa-file-text" aria-hidden="true"></i>
-            </h3>
-            {{model.product.overview}}
-
-            <br/>
-
-            <h3>Number of episodes</h3>
-            {{model.product.number_of_episodes}}
-
-            <h3>Number of seasons</h3>
-            {{model.product.number_of_seasons}}
-
-            <h3>Home page</h3>
-            <a href="{{model.product.homepage}}">{{model.product.homepage}}</a>
-
-            <h3>First Air Date</h3>
-            {{model.product.first_air_date}}
-
-            <h3>Last Air Date</h3>
-            {{model.product.last_air_date}}
-
-
-            <h3>Cast</h3>
-            <div class="container">
-                <div ng-repeat="showarr in model.cast">
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-if="showarr.profile_path">
-                        <a>
-                            <img class="img-responsive img-rounded img-cast"
-                                 ng-src="https://image.tmdb.org/t/p/w500/{{showarr.profile_path}}"
-                                 alt="{{showarr.profile_path}}"/>
-                            <p>{{showarr.name}}</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <br/>
-
-            <h3>You may also like: </h3>
-            <div ng-repeat="showarr in model.shows_similar">
-                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-if="showarr.poster_path">
-                    <a href="#/user/search/{{showarr.id}}">
-                        <img class="img-responsive thumbnail"
-                             ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
-                             alt="{{showarr.poster_path}}"/>
-                        <p class="img-text">{{showarr.name}}</p>
+                    <input id="money" ng-model="model.show.count" type="number" name="quantity">
+                    <a class="btn btn-primary btn-circle"
+                       ng-click="model.addShow(model.show)">
+                        <i class="fa fa-money" aria-hidden="true"></i>
                     </a>
-                    <br/>
+                    <div ng-show="model.error" class="alert alert-danger" role="alert">
+                        {{model.error}}
+                    </div>
+
+                    <div ng-show="model.message" class="alert alert-danger" role="alert">
+                        {{model.message}}
+                    </div>
                 </div>
+                <div ng-show="model.bid">
+                    <a href="#/show">
+                        <button class="btn btn-circle btn-warning"><i class="fa fa-reply-all"
+                                                                      aria-hidden="true"></i></i></button>
+                    </a>
+                    <button ng-hide="model.like" ng-click="model.liketheshow()" class="btn btn-circle btn-info">
+                        <i
+                                class="fa fa-thumbs-up"></i></button>
+                    <button ng-show="model.like" ng-click="model.undolike()" class="btn btn-circle btn-info"><i
+                            class="fa fa-thumbs-down"></i></button>
+                    <button ng-hide="model.wish" ng-click="model.addtowishlist()"
+                            class="btn btn-circle btn-danger"><i
+                            class="fa fa-heart-o"></i></button>
+                    <button ng-show="model.wish" ng-click="model.removefromwishlist()"
+                            class="btn btn-circle btn-danger"><i
+                            class="fa fa-heart"></i></button>
+                    <a class="btn btn-success btn-sm"
+                       href="#/user/search/{{model.pid}}/findstores">Find Stores</a>
+                </div>
+                <br/>
+
+
             </div>
-    </div>
-</div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text pull-right">
-                <a href="#/user">
-            <span class="glyphicon glyphicon-user">
-            </span>
-                </a>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                </a>
+            <div class="youtube-widget col-sm-5">
+                <iframe width="100%" ng-src="{{model.getTrustedURL(model.showTrailerid)}}"
+                        frameborder="0"></iframe>
             </div>
         </div>
-    </nav>
+
+        <br/>
+
+        <!--<div class="form-group" ng-show="model.bid">-->
+        <!--<button ng-hide="model.like" ng-click="model.liketheshow()" class="btn btn-sm btn-info"><i-->
+        <!--class="fa fa-thumbs-up">Like</i></button>-->
+        <!--<button ng-show="model.like" ng-click="model.undolike()" class="btn btn-sm btn-info"><i-->
+        <!--class="fa fa-thumbs-down">Undo Like</i></button>-->
+        <!--<button ng-hide="model.wish" ng-click="model.addtowishlist()" class="btn btn-sm btn-danger"><i-->
+        <!--class="fa fa-heart-o">Wish</i></button>-->
+        <!--<button ng-show="model.wish" ng-click="model.removefromwishlist()" class="btn btn-sm btn-danger"><i-->
+        <!--class="fa fa-heart">Remove Wish</i></button>-->
+        <!--<a class="btn btn-success btn-sm"-->
+        <!--href="#/user/search/{{model.pid}}/findstores">Find Stores Near you</a>-->
+        <!--</div>-->
+
+        <h3>About
+            <i class="fa fa-file-text" aria-hidden="true"></i>
+        </h3>
+        {{model.product.overview}}
+
+        <br/>
+
+        <h3>Number of episodes</h3>
+        {{model.product.number_of_episodes}}
+
+        <h3>Number of seasons</h3>
+        {{model.product.number_of_seasons}}
+
+        <h3>Home page</h3>
+        <a href="{{model.product.homepage}}">{{model.product.homepage}}</a>
+
+        <h3>First Air Date</h3>
+        {{model.product.first_air_date}}
+
+        <h3>Last Air Date</h3>
+        {{model.product.last_air_date}}
+
+
+        <h3>Cast</h3>
+        <div class="container">
+            <div ng-repeat="showarr in model.cast">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-if="showarr.profile_path">
+                    <a>
+                        <img class="img-responsive img-rounded img-cast"
+                             ng-src="https://image.tmdb.org/t/p/w500/{{showarr.profile_path}}"
+                             alt="{{showarr.profile_path}}"/>
+                        <p>{{showarr.name}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <h3>You may also like: </h3>
+        <div ng-repeat="showarr in model.shows_similar">
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-if="showarr.poster_path">
+                <a href="#/user/search/{{showarr.id}}">
+                    <img class="img-responsive thumbnail"
+                         ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
+                         alt="{{showarr.poster_path}}"/>
+                    <p class="img-text">{{showarr.name}}</p>
+                </a>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user">
+            <span class="glyphicon glyphicon-user">
+            </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            </a>
+        </div>
+    </div>
+</nav>

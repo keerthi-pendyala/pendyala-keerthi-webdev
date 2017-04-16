@@ -21,7 +21,9 @@ module.exports = function (model) {
         removefromwishlist:removefromwishlist,
         // findAllUsers:findAllUsers
         purchaseTVShow: purchaseTVShow,
-        findAllUsers:findAllUsers
+        findAllUsers:findAllUsers,
+        addToFav:addToFav,
+        removeFav:removeFav
     };
     return api;
 
@@ -139,6 +141,32 @@ module.exports = function (model) {
             });
         return deferred.promise;
     }
+
+    function addToFav(userId,sid) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({_id: userId}, function (err, user) {
+                user.sellers_favourite.push(sid);
+                user.save();
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
+
+
+    function removeFav(userId,sid) {
+        var deferred = q.defer();
+        usermodel
+            .findOne({_id: userId}, function (err, user) {
+                var sellerindex = user.sellers_favourite.indexOf(sid);
+                user.sellers_favourite.splice(sellerindex, 1);
+                user.save();
+                deferred.resolve(user);
+            });
+        return deferred.promise;
+    }
+
+
 
     function liketheshow(userId,showId) {
         var deferred = q.defer();

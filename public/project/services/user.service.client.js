@@ -23,7 +23,9 @@
             "addTVShow":addTVShow,
             "addtowishlist":addtowishlist,
             "removefromwishlist":removefromwishlist,
-            "findAllUsers":findAllUsers
+            "findAllUsers":findAllUsers,
+            "addToFav":addToFav,
+            "removeFav":removeFav
           //  "purchaseTVShow":purchaseTVShow
          //   "createShow":createShow,
          //   "addSeller":addSeller,
@@ -160,6 +162,20 @@
 
         function addShow(sid,pid,show){
             return $http.post("/api/seller/"+sid+"/"+pid,show)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function addToFav(uid,sid){
+            return $http.post("/api/fav/"+uid+"/"+sid)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function removeFav(uid,sid){
+            return $http.post("/api/unfav/"+uid+"/"+sid)
                 .then(function (response) {
                     return response.data;
                 });

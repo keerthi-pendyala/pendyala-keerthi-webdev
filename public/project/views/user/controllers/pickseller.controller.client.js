@@ -6,6 +6,9 @@
     function picksellerController(userService,showService,$location,$routeParams,checkUser) {
         var vm = this;
         vm.logout = logout;
+        vm.addToFav=addToFav;
+        vm.removeFav=removeFav;
+
         if(checkUser)
             vm.uid = checkUser._id;
 
@@ -13,10 +16,15 @@
         vm.pid=$routeParams['pid'];
 
         function init() {
+            userService
+                .findUserByUserId(vm.uid)
+                .then(function (user) {
+                    vm.user = user;
+                });
+
             showService
                 .getSellers(vm.pid)
                 .then(function(sellers){
-                    console.log(sellers);
                     vm.sellers= sellers;
                     vm.sellerinfo=[];
                     for(var i=0;i<vm.sellers.length;i++)
@@ -25,15 +33,20 @@
                             .findUserByUserId(vm.sellers[i])
                             .then(function (sellerin)
                             {
-                                console.log(sellerin);
                                 for(var j=0;j<sellerin.shows_forsale.length;j++)
                                 {
-                                      if(sellerin.shows_forsale[j].showId === vm.pid)
-                                         count = sellerin.shows_forsale[j].count;
+                                      if(sellerin.shows_forsale[j].showId === vm.pid) {
+                                          for(var k=0;k<vm.user.sellers_favourite.length;k++)
+                                          {
+                                              if(vm.user.sellers_favourite[k] == sellerin._id)
+                                              {
+                                                    sellerin.fav = true;
+                                              }
+                                          }
+                                          sellerin.showcount = sellerin.shows_forsale[j].count;
+                                      }
                                 }
-                                var nseller = sellerin;
-                                nseller.showcount = count;
-                                vm.sellerinfo.push(nseller);
+                                vm.sellerinfo.push(sellerin);
                             });
                     }
                 },function (err){
@@ -49,6 +62,26 @@
                     $location.url("/user");
                 },function (err) {
                     $location.url("/userlogin");
+                });
+        }
+
+        function addToFav(sid,index) {
+            userService
+                .addToFav(vm.uid,sid)
+                .then(function (res) {
+                    vm.sellerinfo[index].fav=true;
+                },function (err) {
+                   vm.error = "Could not update Favourite";
+                });
+        }
+
+        function removeFav(sid,index) {
+            userService
+                .removeFav(vm.uid,sid)
+                .then(function (res) {
+                    vm.sellerinfo[index].fav=false;
+                },function (err) {
+                    vm.error = "Could not update Favourite";
                 });
         }
     }

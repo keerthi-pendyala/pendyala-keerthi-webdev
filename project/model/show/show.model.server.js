@@ -8,13 +8,15 @@ module.exports = function (model) {
         addSeller: addSeller,
         //  addComments:addComments,
         createShow: createShow,
-        addTVSeller:addTVSeller,
+        addTVSeller: addTVSeller,
         //  findSellerByShowId:findSellerByShowId,
         updateShow: updateShow,
         //   removeSeller:removeSeller,
         findShowByShowId: findShowByShowId,
-        removeSeller:removeSeller
-       // updateShowSeller: updateShowSeller
+        removeSeller: removeSeller,
+        liketheshow: liketheshow,
+        undolike: undolike,
+        updateTradeShow:updateTradeShow
     };
     return api;
 
@@ -24,6 +26,44 @@ module.exports = function (model) {
         showModel
             .findOne({showId: showId}, function (err, show) {
                 show.sellers.push(sellerId);
+                show.save();
+                deferred.resolve(show);
+            });
+        return deferred.promise;
+    }
+
+    function liketheshow(showId, sellerId) {
+        var newShow = {shows_liked: [sellerId], showId: showId};
+        var deferred = q.defer();
+        showModel
+            .findOne({showId: showId}, function (err, show) {
+                if (!show) {
+                    showModel
+                        .create(newShow, function (err, show) {
+                            if (err) {
+                                deferred.abort(err);
+                            } else {
+                                deferred.resolve(show);
+                            }
+                        });
+                }
+                else {
+                    show.shows_liked.push(sellerId);
+                    show.save();
+                    deferred.resolve(show);
+                }
+
+            });
+        return deferred.promise;
+    }
+
+
+    function undolike(showId, userId) {
+        var deferred = q.defer();
+        showModel
+            .findOne({showId: showId}, function (err, show) {
+                var userindex = show.shows_liked.indexOf(userId);
+                show.shows_liked.splice(userindex, 1);
                 show.save();
                 deferred.resolve(show);
             });
@@ -80,7 +120,25 @@ module.exports = function (model) {
         return deferred.promise;
     }
 
-    function updateShow(showId, newShow) {
+
+    function updateTradeShow(showId, newShow, tradeId) {
+        var deferred = q.defer();
+        newShow.trades.push(tradeId);
+        showModel
+            .update({showId: showId},
+                {$set: newShow})
+            .then(function (user, err) {
+                if (err) {
+                    deferred.abort(err);
+                }
+                else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function updateShow(showId, newShow, transferId) {
         var deferred = q.defer();
         showModel
             .update({showId: showId},
@@ -139,13 +197,13 @@ module.exports = function (model) {
                                 exists = true;
                             }
                         }
-                            if (exists === false) {
-                                show.sellers.push(sellerId);
-                            }
-                        show.save();
-                            deferred.resolve(show);
+                        if (exists === false) {
+                            show.sellers.push(sellerId);
                         }
+                        show.save();
+                        deferred.resolve(show);
                     }
+                }
             });
         return deferred.promise;
     }

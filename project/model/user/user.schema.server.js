@@ -13,6 +13,7 @@ module.exports = function () {
         shows_bought:[{showId:String,count:Number}],
         shows_liked:[String],
         shows_wishlist:[String],
+        sellers_favourite:[{type: mongoose.Schema.Types.ObjectId, ref: 'usermodel'}],
         dateCreated:{type:Date,default:Date.now},
         facebook : {
             token : String,

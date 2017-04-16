@@ -4,7 +4,7 @@ module.exports = function (app, model) {
     app.put("/api/show/:showId", updateShow);
     app.post("/api/show/:sellerId/:showId", addSeller);
     // app.delete("/api/user/:userId", deleteUser);
-    app.put("/api/show/purchase/:buyerId/:sellerId/:showId",purchaseTVShow);
+    app.put("/api/show/purchase/:buyerId/:sellerId/:showId", purchaseTVShow);
     app.post("/api/show", createShow);
     app.get("/api/show/getsellers/:showId", getSellers);
     app.delete("/api/seller/:sellerId/:showId", removeSeller);
@@ -121,21 +121,21 @@ module.exports = function (app, model) {
                             model.usermodel
                                 .updateUser(sellerId, newseller)
                                 .then(function (usr) {
-                                    var newshow = cshow;
-                                    newshow.count -= 1;
-                                    //update the show table by decrementing overall count
-                                    model.showmodel
-                                        .updateShow(showId, newshow)
-                                        .then(function (show) {
-                                            var nshow = {showId: showId, count: 1};
-                                            //update the buyer by incrementing count
-                                            model.usermodel
-                                                .purchaseTVShow(buyerId, nshow)
-                                                .then(function (usr) {
-                                                    model.trademodel
-                                                        .createTransfer(sellerId,buyerId,showId)
-                                                        .then(function (show) {
-                                                            res.send(show);
+                                    model.trademodel
+                                        .createTransfer(sellerId, buyerId, showId)
+                                        .then(function (transfer) {
+                                            var newshow = cshow;
+                                            newshow.count -= 1;
+                                            //update the show table by decrementing overall count
+                                            model.showmodel
+                                                .updateTradeShow(showId, newshow, transfer._id)
+                                                .then(function (show) {
+                                                    var nshow = {showId: showId, count: 1};
+                                                    //update the buyer by incrementing count
+                                                    model.usermodel
+                                                        .purchaseTVShow(buyerId, nshow)
+                                                        .then(function (usr) {
+                                                            res.send(usr);
                                                         }, function (err) {
                                                             res.sendStatus(500).send(err);
                                                         });
@@ -154,5 +154,5 @@ module.exports = function (app, model) {
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
-        }
-    };
+    }
+};

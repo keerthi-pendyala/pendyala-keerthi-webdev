@@ -13,6 +13,8 @@ module.exports = function (app, model) {
     app.post("/api/undolike/:userId/:pid", undolike);
     app.post("/api/wishlist/:userId/:pid", addtowishlist);
     app.post("/api/removewish/:userId/:pid", removefromwishlist);
+    app.post("/api/fav/:userId/:sid", addToFav);
+    app.post("/api/unfav/:userId/:sid", removeFav);
     app.post("/api/register", register);
     app.post("/api/login", passport.authenticate('projectlocal'), login);
     app.post("/api/logout", logout);
@@ -183,11 +185,38 @@ module.exports = function (app, model) {
         model.usermodel
             .liketheshow(req.params.userId,req.params.pid)
             .then(function (user) {
+                model.showmodel
+                    .liketheshow(req.params.pid,req.params.userId)
+                    .then(function (shw) {
+                        res.send(shw);
+                    }, function (err) {
+                        res.sendStatus(500).send(err);
+                    });
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
+    }
+
+    function addToFav(req, res) {
+        model.usermodel
+            .addToFav(req.params.userId,req.params.sid)
+            .then(function (user) {
                 res.send(user);
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
     }
+
+    function removeFav(req, res) {
+        model.usermodel
+            .removeFav(req.params.userId,req.params.sid)
+            .then(function (user) {
+                res.send(user);
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
+    }
+
 
     function addtowishlist(req, res) {
         model.usermodel
@@ -213,7 +242,13 @@ module.exports = function (app, model) {
         model.usermodel
             .undolike(req.params.userId,req.params.pid)
             .then(function (user) {
-                res.send(user);
+                model.showmodel
+                    .undolike(req.params.pid,req.params.userId)
+                    .then(function (user) {
+                        res.send(user);
+                    }, function (err) {
+                        res.sendStatus(500).send(err);
+                    });
             }, function (err) {
                 res.sendStatus(500).send(err);
             });
@@ -254,6 +289,7 @@ module.exports = function (app, model) {
     function updateUser(req, res) {
         var userId = req.params['userId'];
         var newUser = req.body;
+        newUser.password = bcrypt.hashSync(newUser.password);
         model.usermodel
             .updateUser(req.params.userId, newUser)
             .then(function (user) {

@@ -35,8 +35,10 @@
 
     <a href="#/user/search/{{model.pid}}/findstores/{{seller._id}}">
     <button class="w3-button w3-block w3-green">+ Buy</button>
-        <button class="w3-button w3-block w3-green">Add to favourite</button>
     </a>
+
+        <button ng-hide="seller.fav" ng-click="model.addToFav(seller._id,$index)" class="w3-button w3-block w3-green">Add to fav</button>
+        <button ng-show="seller.fav" ng-click="model.removeFav(seller._id,$index)" class="w3-button w3-block w3-green">Remove fav</button>
 
 </div>
 </div>
