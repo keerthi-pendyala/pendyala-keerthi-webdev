@@ -1,26 +1,26 @@
-(function(){
+(function () {
     angular
         .module("SoapOperaWorld")
         .controller("adminbuyersController", adminbuyersController);
 
-    function adminbuyersController(userService,loggedIn) {
+    function adminbuyersController(userService, loggedIn) {
         var vm = this;
-        vm.openNav=openNav;
-        vm.closeNav=closeNav;
-        if(loggedIn)
-            vm.aid=loggedIn._id;
+        vm.openNav = openNav;
+        vm.closeNav = closeNav;
+        if (loggedIn)
+            vm.aid = loggedIn._id;
 
         function init() {
             userService
                 .findAllUsers()
-                .then(function(users){
-                    vm.users= users;
-                    if(vm.users.length === 0)
-                    {
-                        vm.error = "No Users to display!";
+                .then(function (users) {
+                    vm.users = users;
+                    if (vm.users.length === 1) {
+                        vm.message = "No Users to display!";
                     }
                 });
         }
+
         init();
 
 

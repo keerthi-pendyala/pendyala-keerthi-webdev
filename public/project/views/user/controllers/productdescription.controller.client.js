@@ -1,47 +1,47 @@
-(function(){
+(function () {
     angular
         .module("SoapOperaWorld")
         .controller("productdescriptionController", productdescriptionController);
 
-    function productdescriptionController(showService,checkUser,userService,$location,$routeParams,$sce) {
+    function productdescriptionController(showService, checkUser, userService, $location, $routeParams, $sce) {
         var vm = this;
-        if(checkUser)
+        if (checkUser)
             vm.uid = checkUser._id;
 
-        vm.pid=$routeParams['pid'];
-        vm.getTrustedURL=getTrustedURL;
-        vm.addShow=addShow;
+        vm.pid = $routeParams['pid'];
+        vm.getTrustedURL = getTrustedURL;
+        vm.addShow = addShow;
         vm.logout = logout;
         vm.liketheshow = liketheshow;
         vm.undolike = undolike;
-        vm.addtowishlist=addtowishlist;
-        vm.removefromwishlist=removefromwishlist;
+        vm.addtowishlist = addtowishlist;
+        vm.removefromwishlist = removefromwishlist;
 
         function init() {
             showService
                 .findProductById(vm.pid)
-                .then(function(product){
-                    vm.product=product;
+                .then(function (product) {
+                    vm.product = product;
 
                 });
             showService
                 .getTrailer(vm.pid)
-                .then(function(video){
-                    vm.videoresults=video.results;
-                    if(vm.videoresults)
-                    vm.showTrailerid=vm.videoresults[0].key;
+                .then(function (video) {
+                    vm.videoresults = video.results;
+                    if (vm.videoresults)
+                        vm.showTrailerid = vm.videoresults[0].key;
                 });
 
             showService
                 .getSimilarShows(vm.pid)
-                .then(function(shows_similar){
-                    vm.shows_similar=shows_similar.results;
+                .then(function (shows_similar) {
+                    vm.shows_similar = shows_similar.results;
                 });
 
             showService
                 .getCredits(vm.pid)
-                .then(function(credits){
-                    vm.cast=credits.cast;
+                .then(function (credits) {
+                    vm.cast = credits.cast;
                     // console.log(vm.cast);
                 });
 
@@ -51,39 +51,34 @@
                     vm.show = show;
                 });
 
-            if(vm.uid)
-            {
+            if (vm.uid) {
                 userService
                     .findUserByUserId(vm.uid)
-                    .then(function(user){
-                        vm.like=false;
-                        vm.wish=false;
-                        vm.user=user;
-                        if(vm.user.type === "buyer")
-                        {
+                    .then(function (user) {
+                        vm.like = false;
+                        vm.wish = false;
+                        vm.user = user;
+                        if (vm.user.type === "buyer") {
                             vm.bid = vm.user._id;
                         }
-                        else
-                        {
+                        if (vm.user.type === "seller") {
                             vm.sid = vm.user._id;
                         }
-                        for(i=0;i<user.shows_liked.length;i++)
-                        {
-                            if(user.shows_liked[i] === vm.pid)
-                                vm.like=true;
+                        for (i = 0; i < user.shows_liked.length; i++) {
+                            if (user.shows_liked[i] === vm.pid)
+                                vm.like = true;
                         }
-                        for(i=0;i<user.shows_wishlist.length;i++)
-                        {
-                            if(user.shows_wishlist[i] === vm.pid)
-                                vm.wish=true;
+                        for (i = 0; i < user.shows_wishlist.length; i++) {
+                            if (user.shows_wishlist[i] === vm.pid)
+                                vm.wish = true;
                         }
 
                     });
             }
 
 
-
         }
+
         init();
 
 
@@ -92,48 +87,47 @@
             return $sce.trustAsResourceUrl(url);
         }
 
-        function addShow(newshow){
+        function addShow(newshow) {
             userService
-                .addTVShow(vm.pid,vm.sid,newshow)
-                .then(function(usr){
-                    if(!usr) {
-                        vm.error='Could not update show';
+                .addTVShow(vm.pid, vm.sid, newshow)
+                .then(function (usr) {
+                    if (!usr) {
+                        vm.error = 'Could not update show';
                     }
-                    else
-                    {
-                        vm.message = "Show  added to inventory";
+                    else {
+                        $location.url("/seller/forsale");
                     }
                 });
         }
 
 
-        function liketheshow(){
+        function liketheshow() {
             userService
-                .liketheshow(vm.bid,vm.pid)
+                .liketheshow(vm.bid, vm.pid)
                 .then(function (res) {
-                   vm.like = true;
+                    vm.like = true;
                 });
         }
 
-        function undolike(){
+        function undolike() {
             userService
-                .undolike(vm.bid,vm.pid)
+                .undolike(vm.bid, vm.pid)
                 .then(function (res) {
                     vm.like = false;
                 });
         }
 
-        function addtowishlist(){
+        function addtowishlist() {
             userService
-                .addtowishlist(vm.bid,vm.pid)
+                .addtowishlist(vm.bid, vm.pid)
                 .then(function (res) {
                     vm.wish = true;
                 });
         }
 
-        function removefromwishlist(){
+        function removefromwishlist() {
             userService
-                .removefromwishlist(vm.bid,vm.pid)
+                .removefromwishlist(vm.bid, vm.pid)
                 .then(function (res) {
                     vm.wish = false;
                 });
@@ -144,7 +138,7 @@
                 .logout()
                 .then(function (res) {
                     $location.url("/user");
-                },function (err) {
+                }, function (err) {
                     $location.url("/userlogin");
                 });
         }

@@ -1,15 +1,15 @@
-(function(){
+(function () {
     angular
         .module("SoapOperaWorld")
         .controller("admintradeController", admintradeController);
 
-    function admintradeController(userService,tradeService, showService, loggedIn) {
+    function admintradeController(userService, tradeService, showService, loggedIn) {
         var vm = this;
-        vm.openNav=openNav;
-        vm.closeNav=closeNav;
+        vm.openNav = openNav;
+        vm.closeNav = closeNav;
 
-        if(loggedIn)
-            vm.aid=loggedIn._id;
+        if (loggedIn)
+            vm.aid = loggedIn._id;
 
         function init() {
             tradeService
@@ -20,12 +20,13 @@
                         vm.message = "No trades between buyer and seller yet"
                     }
                     else {
-                        getBuyerInfo(trades);
-                        getSellerInfo(trades);
+                        vm.buyer_info = trades;
+                        vm.seller_info = trades;
                         getShowsInfo(trades);
                     }
                 });
         }
+
         init();
 
         function getBuyerInfo(trades) {
@@ -38,7 +39,7 @@
                             name: user.firstName + " " + user.lastName,
                             contact: user.email
                         };
-                            buyer_info.push(newUser);
+                        buyer_info.push(newUser);
                     });
             }
             vm.buyer_info = buyer_info;
@@ -60,18 +61,16 @@
             vm.seller_info = seller_info;
         }
 
-        function getShowsInfo(trades){
+        function getShowsInfo(trades) {
             var shows_info = [];
-            for (var i=0;i<trades.length;i++)
-            {
+            for (var i = 0; i < trades.length; i++) {
                 showService
                     .findProductById(trades[i].showId)
-                    .then(function(show){
+                    .then(function (show) {
                         shows_info.push(show);
                     });
             }
-            vm.shows_info=shows_info;
-            console.log(shows_info);
+            vm.shows_info = shows_info;
         }
 
 

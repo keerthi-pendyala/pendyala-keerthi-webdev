@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
@@ -15,9 +16,6 @@
         </div>
     </div>
 </nav>
-
-<div class="container-fluid">
-
     <div id="body-div">
         <!--<h1>-->
         <!--{{model.product.name}}-->
@@ -45,9 +43,9 @@
 
                 <br/>
                 <div class="form-group" ng-show="model.sid">
-                    <input id="money" ng-model="model.show.count" type="number" name="quantity">
+                    <input id="money" ng-model="show.count" type="number" name="quantity">
                     <a class="btn btn-primary btn-circle"
-                       ng-click="model.addShow(model.show)">
+                       ng-click="model.addShow(show)">
                         <i class="fa fa-money" aria-hidden="true"></i>
                     </a>
                     <div ng-show="model.error" class="alert alert-danger" role="alert">
@@ -61,7 +59,7 @@
                 <div ng-show="model.bid">
                     <a href="#/show">
                         <button class="btn btn-circle btn-warning"><i class="fa fa-reply-all"
-                                                                      aria-hidden="true"></i></i></button>
+                                                                      aria-hidden="true"></i></button>
                     </a>
                     <button ng-hide="model.like" ng-click="model.liketheshow()" class="btn btn-circle btn-info">
                         <i
@@ -78,8 +76,6 @@
                        href="#/user/search/{{model.pid}}/findstores">Find Stores</a>
                 </div>
                 <br/>
-
-
             </div>
             <div class="youtube-widget col-sm-5">
                 <iframe width="100%" ng-src="{{model.getTrustedURL(model.showTrailerid)}}"
@@ -89,18 +85,6 @@
 
         <br/>
 
-        <!--<div class="form-group" ng-show="model.bid">-->
-        <!--<button ng-hide="model.like" ng-click="model.liketheshow()" class="btn btn-sm btn-info"><i-->
-        <!--class="fa fa-thumbs-up">Like</i></button>-->
-        <!--<button ng-show="model.like" ng-click="model.undolike()" class="btn btn-sm btn-info"><i-->
-        <!--class="fa fa-thumbs-down">Undo Like</i></button>-->
-        <!--<button ng-hide="model.wish" ng-click="model.addtowishlist()" class="btn btn-sm btn-danger"><i-->
-        <!--class="fa fa-heart-o">Wish</i></button>-->
-        <!--<button ng-show="model.wish" ng-click="model.removefromwishlist()" class="btn btn-sm btn-danger"><i-->
-        <!--class="fa fa-heart">Remove Wish</i></button>-->
-        <!--<a class="btn btn-success btn-sm"-->
-        <!--href="#/user/search/{{model.pid}}/findstores">Find Stores Near you</a>-->
-        <!--</div>-->
 
         <h3>About
             <i class="fa fa-file-text" aria-hidden="true"></i>
@@ -143,7 +127,7 @@
 
         <h3>You may also like: </h3>
         <div ng-repeat="showarr in model.shows_similar">
-            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" ng-if="showarr.poster_path">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" ng-if="showarr.poster_path">
                 <a href="#/user/search/{{showarr.id}}">
                     <img class="img-responsive thumbnail"
                          ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
@@ -154,7 +138,6 @@
             </div>
         </div>
     </div>
-</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
@@ -169,3 +152,4 @@
         </div>
     </div>
 </nav>
+</div>

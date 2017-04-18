@@ -61,6 +61,12 @@
                 controllerAs: 'model',
                 resolve : {loggedIn : checkLoggedIn}
             })
+            .when("/buyer/fav", {
+                templateUrl: "views/user/templates/buyer-favourites.view.client.html",
+                controller: 'buyerfavController',
+                controllerAs: 'model',
+                resolve : {loggedIn : checkLoggedIn}
+            })
             .when("/seller/forsale", {
                 templateUrl: "views/user/templates/seller-forsale.view.client.html",
                 controller: 'sellerforsaleController',
@@ -82,6 +88,18 @@
             .when("/admin/trade", {
                 templateUrl: "views/user/templates/admin-trade.view.client.html",
                 controller: 'admintradeController',
+                controllerAs: 'model',
+                resolve : {loggedIn : checkLoggedIn}
+            })
+            .when("/admin/create", {
+                templateUrl: "views/user/templates/admin-create.view.client.html",
+                controller: 'admincreateController',
+                controllerAs: 'model',
+                resolve : {loggedIn : checkLoggedIn}
+            })
+            .when("/admin/edit/:uid", {
+                templateUrl: "views/user/templates/admin-edit.view.client.html",
+                controller: 'admineditController',
                 controllerAs: 'model',
                 resolve : {loggedIn : checkLoggedIn}
             })

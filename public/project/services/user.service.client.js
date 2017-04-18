@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("SoapOperaWorld")
         .factory('userService', userService);
@@ -6,33 +6,26 @@
     function userService($http) {
 
         var api = {
-            "login":login,
-            "logout":logout,
-            "loggedIn":loggedIn,
+            "login": login,
+            "logout": logout,
+            "loggedIn": loggedIn,
             "createUser": createUser,
             "deleteUser": deleteUser,
             "updateUser": updateUser,
-            "register":register,
-            "liketheshow":liketheshow,
-            "undolike":undolike,
-           // "findAllUsers": findAllUsers,
+            "register": register,
+            "liketheshow": liketheshow,
+            "undolike": undolike,
             "findUserByCredentials": findUserByCredentials,
             "findUserByUserId": findUserByUserId,
             "findUserByUsername": findUserByUsername,
             "addShow": addShow,
-            "addTVShow":addTVShow,
-            "addtowishlist":addtowishlist,
-            "removefromwishlist":removefromwishlist,
-            "findAllUsers":findAllUsers,
-            "addToFav":addToFav,
-            "removeFav":removeFav
-          //  "purchaseTVShow":purchaseTVShow
-         //   "createShow":createShow,
-         //   "addSeller":addSeller,
-         //   "updateShow": updateShow
-         //   "findProductById":findProductById,
-         //   "getTVShows":getTVShows,
-         //   "getAllTVShows":getAllTVShows
+            "addTVShow": addTVShow,
+            "addtowishlist": addtowishlist,
+            "removefromwishlist": removefromwishlist,
+            "findAllUsers": findAllUsers,
+            "addToFav": addToFav,
+            "removeFav": removeFav,
+            "createAdminUser": createAdminUser
         };
         return api;
 
@@ -60,7 +53,7 @@
 
 
         function deleteUser(UserId) {
-            return $http.delete('/api/user/'+UserId)
+            return $http.delete('/api/user/' + UserId)
                 .then(function (response) {
                     return response.data;
                 });
@@ -74,6 +67,13 @@
                 });
         }
 
+        function createAdminUser(User) {
+            return $http.post("/api/admin/create", User)
+                .then(function (response) {
+                    return response;
+                });
+        }
+
         function register(User) {
             return $http.post("/api/register", User)
                 .then(function (response) {
@@ -83,7 +83,7 @@
 
 
         function findUserByUsername(Username) {
-            return $http.get("/api/user?username="+Username)
+            return $http.get("/api/user?username=" + Username)
                 .then(function (response) {
                     return response.data;
                 });
@@ -91,21 +91,21 @@
         }
 
         function findUserByCredentials(username, password) {
-            return $http.get("/api/user?username="+username+"&password="+password)
+            return $http.get("/api/user?username=" + username + "&password=" + password)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
         function updateUser(userId, newUser) {
-            return $http.put("/api/user/"+userId, newUser)
+            return $http.put("/api/user/" + userId, newUser)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
         function findUserByUserId(uid) {
-            return $http.get("/api/user/"+uid)
+            return $http.get("/api/user/" + uid)
                 .then(function (response) {
                     return response.data;
                 });
@@ -119,34 +119,20 @@
         }
 
 
-
         function updateSeller(sellerId, newseller) {
-            return $http.put("/api/seller/"+sellerId, newseller)
+            return $http.put("/api/seller/" + sellerId, newseller)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
         function updateShow(showId, newshow) {
-            return $http.put("/api/show/"+showId, newshow)
+            return $http.put("/api/show/" + showId, newshow)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function findSellerById(sid) {
-            return $http.get("/api/seller/"+sid)
-                .then(function (response) {
-                    return response.data;
-                });
-        }
-
-        function findShowById(pid) {
-            return $http.get("/api/show/"+pid)
-                .then(function (response) {
-                    return response.data;
-                });
-        }
 
         function getShows(show) {
             var key = "53b51c871dad98d0c04e5b6c841e5240";
@@ -160,65 +146,65 @@
         }
 
 
-        function addShow(sid,pid,show){
-            return $http.post("/api/seller/"+sid+"/"+pid,show)
+        function addShow(sid, pid, show) {
+            return $http.post("/api/seller/" + sid + "/" + pid, show)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function addToFav(uid,sid){
-            return $http.post("/api/fav/"+uid+"/"+sid)
+        function addToFav(uid, sid) {
+            return $http.post("/api/fav/" + uid + "/" + sid)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function removeFav(uid,sid){
-            return $http.post("/api/unfav/"+uid+"/"+sid)
+        function removeFav(uid, sid) {
+            return $http.post("/api/unfav/" + uid + "/" + sid)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function liketheshow(bid,pid){
-            return $http.post("/api/like/"+bid+"/"+pid)
+        function liketheshow(bid, pid) {
+            return $http.post("/api/like/" + bid + "/" + pid)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function undolike(bid,pid){
-            return $http.post("/api/undolike/"+bid+"/"+pid)
+        function undolike(bid, pid) {
+            return $http.post("/api/undolike/" + bid + "/" + pid)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
 
-        function addtowishlist(bid,pid){
-            return $http.post("/api/wishlist/"+bid+"/"+pid)
+        function addtowishlist(bid, pid) {
+            return $http.post("/api/wishlist/" + bid + "/" + pid)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function removefromwishlist(bid,pid){
-            return $http.post("/api/removewish/"+bid+"/"+pid)
+        function removefromwishlist(bid, pid) {
+            return $http.post("/api/removewish/" + bid + "/" + pid)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function addTVShow(pid,sid,show){
-            return $http.post("/api/seller/show/"+sid+"/"+pid,show)
+        function addTVShow(pid, sid, show) {
+            return $http.post("/api/seller/show/" + sid + "/" + pid, show)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function addSeller(pid,sid) {
-            return $http.post("/api/show/"+sid+"/"+pid)
+        function addSeller(pid, sid) {
+            return $http.post("/api/show/" + sid + "/" + pid)
                 .then(function (response) {
                     return response.data;
                 });

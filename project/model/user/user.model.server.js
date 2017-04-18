@@ -19,7 +19,6 @@ module.exports = function (model) {
         undolike:undolike,
         addtowishlist:addtowishlist,
         removefromwishlist:removefromwishlist,
-        // findAllUsers:findAllUsers
         purchaseTVShow: purchaseTVShow,
         findAllUsers:findAllUsers,
         addToFav:addToFav,

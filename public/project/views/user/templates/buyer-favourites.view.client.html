@@ -9,9 +9,9 @@
             <a class="navbar-brand" href="#/show">
                 <b class="kp-navbar-text pull-right">S.O.W</b>
             </a>
+
         </div>
     </nav>
-
 
     <div id="mySidenav" class="sidenav">
         <a>
@@ -28,33 +28,35 @@
         </div>
     </div>
 
-
     <div id="body-div">
-    <div id="main">
-        <div class="alert alert-danger" ng-show="model.error">
-            {{model.error}}
-        </div>
-
-        <div class="alert alert-success" ng-show="model.message">
-            {{model.message}}
-        </div>
-        <div ng-repeat="show in model.shows_info" ng-hide="model.message">
-            <div class="row">
-                <div class="col-xs-4 hidden-xs">
-                    <a href="#/user/search/{{show.id}}">
-                        <img ng-src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}" class="img-circle"
-                             alt="No poster available" width="275" height="250">
-                    </a>
-                </div>
-                <div class="col-xs-8">
-                    <a href="#/user/search/{{show.id}}">
-                        <h4>{{show.name}}</h4>
-                    </a>
-                </div>
+        <div id="main">
+            <div class="alert alert-danger" ng-show="model.error">
+                {{model.error}}
             </div>
-            <br/>
+
+
+            <div class="alert alert-success" ng-show="model.message">
+                {{model.message}}
+            </div>
+            <div class="container-fluid" ng-hide="model.message">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Seller Name</th>
+                        <th class="hidden-xs">Phone</th>
+                        <th class="hidden-xs">Email</th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="seller in model.seller_info">
+                    <tr >
+                        <td>{{seller.name}}</td>
+                        <td class="hidden-xs">{{seller.phone}}</td>
+                        <td class="hidden-xs">{{seller.email}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

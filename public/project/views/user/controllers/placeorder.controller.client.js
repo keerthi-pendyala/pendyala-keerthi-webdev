@@ -3,11 +3,11 @@
         .module("SoapOperaWorld")
         .controller("placeorderController", placeorderController);
 
-    function placeorderController(userService,$location,showService,$routeParams, checkUser) {
+    function placeorderController(userService, $location, showService, $routeParams, checkUser) {
         var vm = this;
         vm.sid = $routeParams['sid'];
         vm.logout = logout;
-        if(checkUser)
+        if (checkUser)
             vm.bid = checkUser._id;
         vm.pid = $routeParams['pid'];
         vm.confirmpurchase = confirmpurchase;
@@ -33,18 +33,17 @@
                 .logout()
                 .then(function (res) {
                     $location.url("/user");
-                },function (err) {
+                }, function (err) {
                     $location.url("/userlogin");
                 });
         }
 
 
-
         function confirmpurchase() {
             showService
-                .purchaseTVShow(vm.bid,vm.sid,vm.pid,vm.show)
+                .purchaseTVShow(vm.bid, vm.sid, vm.pid, vm.show)
                 .then(function (res) {
-                    if(res === true) {
+                    if (res === true) {
                         vm.outofstock = true;
                         vm.message = false;
                         vm.error = "Sorry the product you are looking for is currently out of stock!." +

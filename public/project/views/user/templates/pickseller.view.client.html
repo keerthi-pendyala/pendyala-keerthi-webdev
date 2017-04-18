@@ -1,5 +1,4 @@
-
-<div class="container fluid">
+<div class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-text pull-right">
@@ -19,32 +18,46 @@
     </nav>
 
     <div id="body-div">
-    <div ng-repeat="seller in model.sellerinfo">
-    <div class="w3-card-4">
 
-    <header class="w3-container w3-red">
-        <h3>{{seller.username}}</h3>
-    </header>
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
 
-    <div class="w3-container">
-        <p>{{seller.showcount}}</p>
-        <hr>
-        <img class = "avatar" src="http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg" alt="Avatar" class="w3-left w3-circle">
-        <p>..</p>
+        <div  ng-show="model.message" class="alert alert-warning" role="alert">
+            {{model.message}}
+        </div>
+
+        <div class="container-fluid" ng-hide="model.message">
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th class="hidden-xs">FirstName</th>
+                    <th>LastName</th>
+                    <th class="hidden-xs">Email</th>
+                    <th class="hidden-xs" >Phone</th>
+                    <th class="hidden-xs">Count</th>
+                    <th>Favourite </th>
+                    <th>Buy</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="seller in model.sellerinfo">
+                <tr ng-if="seller.showcount !== 0">
+                    <td class="hidden-xs">{{seller.firstName}}</td>
+                    <td>{{seller.lastName}}</td>
+                    <td class="hidden-xs">{{seller.email}}</td>
+                    <td class="hidden-xs">{{seller.phone}}</td>
+                    <td class="hidden-xs">{{seller.showcount}}</td>
+                    <td><a ng-hide="seller.fav" ng-click="model.addToFav(seller._id,$index)"><i class="fa fa-star-o fa-2x" aria-hidden="true" style="color:gold"></i></a>
+                        <a ng-show="seller.fav" ng-click="model.removeFav(seller._id,$index)"><i class="fa fa-star fa-2x" aria-hidden="true"style="color:gold"></i></a>
+                    </td>
+                    <td>
+                        <button ng-click="model.confirmpurchase(seller)" class="btn btn-sm btn-primary">Buy</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <a href="#/user/search/{{model.pid}}/findstores/{{seller._id}}">
-    <button class="w3-button w3-block w3-green">+ Buy</button>
-    </a>
-
-        <button ng-hide="seller.fav" ng-click="model.addToFav(seller._id,$index)" class="w3-button w3-block w3-green">Add to fav</button>
-        <button ng-show="seller.fav" ng-click="model.removeFav(seller._id,$index)" class="w3-button w3-block w3-green">Remove fav</button>
-
-</div>
-</div>
-    <br/>
-</div>
-</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
@@ -59,3 +72,4 @@
         </div>
     </div>
 </nav>
+</div>

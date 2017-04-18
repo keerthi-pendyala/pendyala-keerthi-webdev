@@ -3,12 +3,12 @@
         .module("SoapOperaWorld")
         .controller("sellertradeController", sellertradeController);
 
-    function sellertradeController(tradeService,userService,showService, loggedIn) {
+    function sellertradeController(tradeService, userService, showService, loggedIn) {
         var vm = this;
         vm.openNav = openNav;
         vm.closeNav = closeNav;
-        if(loggedIn)
-            vm.sid=loggedIn._id;
+        if (loggedIn)
+            vm.sid = loggedIn._id;
 
         function init() {
             tradeService
@@ -34,46 +34,51 @@
                 userService
                     .findUserByUserId(sellerTrade[i].buyerId)
                     .then(function (buyer) {
-                        var newBuyer = {
-                            name: buyer.firstName + " " + buyer.lastName,
-                            email: buyer.email,
-                            phone: buyer.phone
-                        };
+                        if (!buyer) {
+                            var newBuyer = {
+                                name: buyer.firstName + " " + buyer.lastName,
+                                email: buyer.email,
+                                phone: buyer.phone,
+                                selle: false
+                            }
+                        }
+                        else {
+                            var newBuyer = {
+                                name: buyer.firstName + " " + buyer.lastName,
+                                email: buyer.email,
+                                phone: buyer.phone,
+                                selle: true
+                            }
+                        }
                         buyerInfo.push(newBuyer);
                     });
             }
             vm.buyerInfo = buyerInfo;
-            console.log(vm.buyerInfo)
-
         }
 
-        function getShowsInfo(sellerTrade){
+        function getShowsInfo(sellerTrade) {
             var shows_info = [];
-            for (var i=0;i<sellerTrade.length;i++)
-            {
+            for (var i = 0; i < sellerTrade.length; i++) {
                 showService
                     .findProductById(sellerTrade[i].showId)
-                    .then(function(show){
+                    .then(function (show) {
                         shows_info.push(show);
                     });
             }
-            vm.shows_info=shows_info;
-            console.log(vm.shows_info)
+            vm.shows_info = shows_info;
         }
 
 
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
 
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
 
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
     }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-    }
-
-}
 })
 ();

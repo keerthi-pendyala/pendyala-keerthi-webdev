@@ -3,13 +3,13 @@
         .module("SoapOperaWorld")
         .controller("sellerforsaleController", sellerforsaleController);
 
-    function sellerforsaleController(userService,showService,loggedIn) {
+    function sellerforsaleController(userService, showService, loggedIn) {
         var vm = this;
-        vm.openNav=openNav;
-        vm.closeNav=closeNav;
-        vm.getShowsInfo=getShowsInfo;
-        if(loggedIn)
-            vm.sid=loggedIn._id;
+        vm.openNav = openNav;
+        vm.closeNav = closeNav;
+        vm.getShowsInfo = getShowsInfo;
+        if (loggedIn)
+            vm.sid = loggedIn._id;
 
         function init() {
             userService
@@ -24,20 +24,20 @@
                     }
                 });
         }
+
         init();
 
 
-        function getShowsInfo(shows_forsale){
-             var shows_info = [];
-            for (var i=0;i<shows_forsale.length;i++)
-            {
+        function getShowsInfo(shows_forsale) {
+            var shows_info = [];
+            for (var i = 0; i < shows_forsale.length; i++) {
                 showService
                     .findProductById(shows_forsale[i].showId)
-                    .then(function(show){
+                    .then(function (show) {
                         shows_info.push(show);
                     });
             }
-            vm.shows_info=shows_info;
+            vm.shows_info = shows_info;
         }
 
 

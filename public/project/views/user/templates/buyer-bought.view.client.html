@@ -19,10 +19,12 @@
             </span>
       </a>
         <div ng-show="model.bid">
+            <a href="#/user">Profile</a>
             <a href="#/buyer/likes">Likes</a>
             <a href="#/buyer/wishlist">Wishlist</a>
             <a href="#/buyer/own">Bought</a>
             <a href="#/buyer/trade">Transfers</a>
+            <a href="#/buyer/fav">Favourite Sellers</a>
         </div>
     </div>
 
@@ -36,21 +38,26 @@
             <div class="alert alert-success" ng-show="model.message">
                 {{model.message}}
             </div>
-            <div ng-repeat="show in model.shows_info">
-                <div class ="row">
-                <div class="col-xs-4 hidden-xs">
-                <a href ="#/user/search/{{show.id}}">
-                    <img ng-src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}" class="img-circle" alt="Cinque Terre" width="275" height="250">
-                </a>
-                </div>
-                <div class="col-xs-8">
-                    <a href ="#/user/search/{{show.id}}">
-                <h1>{{show.name}}</h1>
-                    </a>
-                </div>
-                </div>
-                <br/>
-            </div>
+
+            <table ng-hide = 'model.message' class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>Show name</th>
+                    <th class="visible-md visible-lg">Show Poster</th>
+                    <th>Count</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="show in model.shows_info">
+                    <td>{{show.name}}</td>
+                    <td class="visible-md visible-lg">
+                        <a href ="#/user/search/{{show.id}}">
+                            <img ng-src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}" class="img-circle" alt="Cinque Terre" width="275" height="250">
+                        </a>
+                    </td>
+                    <td>{{model.shows_bought[$index].count}}</td>
+                </tr>
+                </tbody>
+            </table>
         </ul>
     </div>
     </div>
@@ -69,4 +76,3 @@
         </div>
     </div>
 </nav>
-

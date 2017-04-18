@@ -1,4 +1,4 @@
-(function(){
+(function () {
     angular
         .module("SoapOperaWorld")
         .controller("userloginController", userloginController);
@@ -23,7 +23,7 @@
                 .logout()
                 .then(function (res) {
                     $location.url("/user");
-                },function (err) {
+                }, function (err) {
                     $location.url("/userlogin");
                 });
         }

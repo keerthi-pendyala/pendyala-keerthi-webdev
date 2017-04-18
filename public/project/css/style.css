@@ -9,9 +9,8 @@ body {
 
 #body-div{
     padding-top : 70px;
-    padding-bottom : 300px;
+    padding-bottom : 200px;
 }
-
 
 a,u{
     text-decoration: none !important;
@@ -52,6 +51,15 @@ h6{
     max-height:250px;
 }
 
+.img-responsive-home {
+    max-width: 200px;
+}
+
+@media(max-width: 768px){
+    .img-responsive-home {
+        max-width: 90px;
+    }
+}
 .thumbnail:hover{
     background-color: darkred;
     transform: scale3d(1.1,1.1,1.1);
@@ -71,6 +79,7 @@ h6{
 }
 
 .kp-navbar-text:hover{
+    padding-left:10px;
     font-weight: bold;
     color: red;
 }
@@ -181,7 +190,7 @@ img.avatar {
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
-/* The navigation menu links */
+
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -191,12 +200,10 @@ img.avatar {
     transition: 0.3s
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
 }
 
-/* Position and style the close button (top right corner) */
 .sidenav .closebtn {
     position: absolute;
     top: 0;
@@ -205,13 +212,11 @@ img.avatar {
     margin-left: 50px;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
     transition: margin-left .5s;
     padding: 20px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -265,3 +270,21 @@ td {
 .img-poster{
     height : 275px;
 }
+
+table, th {
+    color: #1b6d85;
+}
+
+table ,td{
+ color : white;
+}
+
+form.submitted .ng-invalid
+{
+    border: 1px solid red;
+}
+
+.text-error{
+    color: whitesmoke;
+}
+

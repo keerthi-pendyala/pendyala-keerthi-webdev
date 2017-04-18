@@ -1,13 +1,14 @@
 (function () {
     angular
         .module("SoapOperaWorld")
-        .controller("userprofileController", userprofileController);
+        .controller("admineditController", admineditController);
 
-    function userprofileController(loggedIn, $location, userService) {
+    function admineditController(loggedIn, $routeParams, $location, userService) {
         var vm = this;
         if (loggedIn)
-            vm.userId = loggedIn._id;
+            vm.aid = loggedIn._id;
 
+        vm.uid = $routeParams['uid'];
         vm.update = update;
         vm.deleteUser = deleteUser;
         vm.logout = logout;
@@ -16,8 +17,14 @@
 
         function init() {
             userService
-                .findUserByUserId(vm.userId)
-                .then(renderUser);
+                .findUserByUserId(vm.uid)
+                .then(function (user) {
+                    if (!user) {
+                        vm.error = "User not found";
+                    }
+                    else
+                        vm.user = user;
+                });
         }
 
         init();
@@ -34,7 +41,7 @@
 
         function update(newuser) {
             userService
-                .updateUser(vm.userId, newuser)
+                .updateUser(vm.uid, newuser)
                 .then(function (usr) {
                     if (!usr)
                         vm.error = "unable to update user";
@@ -43,23 +50,13 @@
                 });
         }
 
-        function renderUser(user) {
-            vm.user = user;
-            if (vm.user.type === "buyer")
-                vm.bid = vm.userId;
-            if (vm.user.type === "seller")
-                vm.sid = vm.userId;
-            if (vm.user.type === "admin")
-                vm.aid = vm.userId;
-        }
-
         function deleteUser() {
             userService
-                .deleteUser(vm.userId)
+                .deleteUser(vm.uid)
                 .then(function (usr) {
                     if (usr) {
                         vm.error = "Account Deactivated!";
-                        $location.url('/userlogin');
+                        $location.url('/admin/buyers');
                     }
                 });
         }

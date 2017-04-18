@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("SoapOperaWorld")
-        .controller("userregisterController", userregisterController);
+        .controller("admincreateController", admincreateController);
 
-    function userregisterController($location, userService, $scope) {
+    function admincreateController($location, userService, $scope) {
         var vm = this;
         vm.register = register;
         vm.createUser = createUser;
@@ -29,9 +29,9 @@
         function createUser(user) {
             if (user.password === user.verifypassword) {
                 userService
-                    .register(user)
+                    .createAdminUser(user)
                     .then(function (Newuser) {
-                        $location.url("/user");
+                        $location.url("/admin/buyers");
                     });
             }
             else

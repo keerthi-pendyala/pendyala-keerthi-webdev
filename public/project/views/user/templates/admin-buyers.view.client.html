@@ -9,7 +9,11 @@
             <a class="navbar-brand" href="#/show">
                 <b class="kp-navbar-text pull-right">S.O.W</b>
             </a>
-
+        </div>
+        <div class="navbar navbar-body pull-right" style="padding-right: 15px; padding-top: 15px">
+            <a href="#/admin/create">
+              <span> <i class="fa fa-user-plus " aria-hidden="true"></i></span>
+            </a>
         </div>
     </nav>
 
@@ -19,16 +23,14 @@
             </span>
         </a>
         <div ng-show="model.aid">
+            <a href="#/user">Profile</a>
             <a href="#/admin/buyers">User Information</a>
+            <a href="#/admin/trade">Trade Information</a>
         </div>
     </div>
 
     <div id="body-div">
         <div id="main">
-            <div class="alert alert-danger" ng-show="model.error">
-                {{model.error}}
-            </div>
-
 
             <div class="alert alert-success" ng-show="model.message">
                 {{model.message}}
@@ -42,6 +44,7 @@
                     <th class="hidden-xs">Type</th>
                     <th class="hidden-xs">Email</th>
                     <th class="hidden-xs">Phone</th>
+                    <th class="hidden-xs">Update</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,6 +54,9 @@
                     <td class="hidden-xs">{{user.type}}</td>
                     <td class="hidden-xs">{{user.email}}</td>
                     <td class="hidden-xs">{{user.phone}}</td>
+                    <td class="hidden-xs"><a href="#/admin/edit/{{user._id}}">
+                    <i class="fa fa-cog"></i></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

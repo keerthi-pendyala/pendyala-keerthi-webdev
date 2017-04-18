@@ -1,11 +1,10 @@
 module.exports = function (app, model) {
-    // app.get("/api/show", findShow);
     app.get("/api/show/:showId", findShowByShowId);
     app.put("/api/show/:showId", updateShow);
     app.post("/api/show/:sellerId/:showId", addSeller);
-    // app.delete("/api/user/:userId", deleteUser);
     app.put("/api/show/purchase/:buyerId/:sellerId/:showId", purchaseTVShow);
     app.post("/api/show", createShow);
+    app.delete("/api/deleteShow/:showId", deleteShow);
     app.get("/api/show/getsellers/:showId", getSellers);
     app.delete("/api/seller/:sellerId/:showId", removeSeller);
 
@@ -35,11 +34,9 @@ module.exports = function (app, model) {
 
     function getSellers(req, res) {
         var showId = req.params['showId'];
-        console.log(showId);
         model.showmodel
             .findShowByShowId(showId)
             .then(function (show) {
-                console.log(show);
                 res.send(show.sellers);
             }, function (err) {
                 res.sendStatus(500).send(err);

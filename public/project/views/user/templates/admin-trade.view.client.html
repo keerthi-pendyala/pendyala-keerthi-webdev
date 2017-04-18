@@ -19,6 +19,7 @@
             </span>
         </a>
         <div ng-show="model.aid">
+            <a href="#/user">Profile</a>
             <a href="#/admin/buyers">User Information</a>
             <a href="#/admin/trade">Trade Information</a>
         </div>
@@ -38,6 +39,7 @@
             <table class="table table-responsive">
                 <thead>
                 <tr>
+                    <th>Trade Id</th>
                     <th>Seller Name</th>
                     <th class="hidden-xs">Contact</th>
                     <th>Buyer Name</th>
@@ -46,13 +48,15 @@
 
                 </tr>
                 </thead>
-                <tbody>
-                <tr ng-repeat="seller in model.seller_info track by $index">
-                    <td>{{seller.name}}</td>
-                    <td>{{seller.contact}}</td>
-                    <td>{{model.buyer_info[$index].name}}</td>
-                    <td>{{model.buyer_info[$index].contact}}</td>
-                    <td><a href ="#/user/search/{{model.shows_info[$index].id}}">{{model.shows_info[$index].name}}</a></td>
+                <tbody ng-repeat="trade in model.trades track by $index">
+
+                <tr ng-if="trade.sellerId && trade.buyerId">
+                    <td>{{trade._id}}</td>
+                    <td>{{model.seller_info[$index].sellerId.firstName}} {{model.seller_info[$index].sellerId.firstName}}</td>
+                    <td class="hidden-xs">{{model.seller_info[$index].sellerId.email}}</td>
+                    <td>{{model.buyer_info[$index].buyerId.firstName}} {{model.buyer_info[$index].buyerId.lastName}}</td>
+                    <td class="hidden-xs">{{model.buyer_info[$index].buyerId.email}}</td>
+                    <td class="hidden-xs"><a href ="#/user/search/{{model.shows_info[$index].id}}">{{model.shows_info[$index].name}}</a></td>
                 </tr>
                 </tbody>
             </table>

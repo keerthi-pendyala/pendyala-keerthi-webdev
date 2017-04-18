@@ -6,17 +6,15 @@ module.exports = function (model) {
 
     var api = {
         addSeller: addSeller,
-        //  addComments:addComments,
         createShow: createShow,
         addTVSeller: addTVSeller,
-        //  findSellerByShowId:findSellerByShowId,
         updateShow: updateShow,
-        //   removeSeller:removeSeller,
         findShowByShowId: findShowByShowId,
         removeSeller: removeSeller,
         liketheshow: liketheshow,
         undolike: undolike,
-        updateTradeShow:updateTradeShow
+        updateTradeShow:updateTradeShow,
+        deleteShow:deleteShow
     };
     return api;
 
@@ -33,7 +31,7 @@ module.exports = function (model) {
     }
 
     function liketheshow(showId, sellerId) {
-        var newShow = {shows_liked: [sellerId], showId: showId};
+        var newShow = {users_liked: [sellerId], showId: showId};
         var deferred = q.defer();
         showModel
             .findOne({showId: showId}, function (err, show) {
@@ -48,7 +46,7 @@ module.exports = function (model) {
                         });
                 }
                 else {
-                    show.shows_liked.push(sellerId);
+                    show.users_liked.push(sellerId);
                     show.save();
                     deferred.resolve(show);
                 }
@@ -62,8 +60,8 @@ module.exports = function (model) {
         var deferred = q.defer();
         showModel
             .findOne({showId: showId}, function (err, show) {
-                var userindex = show.shows_liked.indexOf(userId);
-                show.shows_liked.splice(userindex, 1);
+                var userindex = show.users_liked.indexOf(userId);
+                show.users_liked.splice(userindex, 1);
                 show.save();
                 deferred.resolve(show);
             });
@@ -149,6 +147,19 @@ module.exports = function (model) {
                 }
                 else {
                     deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function deleteShow(showId) {
+        var deferred = q.defer();
+        showmodel
+            .remove({_id: showId}, function (err, show) {
+                if (err) {
+                    deferred.abort(err);
+                } else {
+                    deferred.resolve(show);
                 }
             });
         return deferred.promise;

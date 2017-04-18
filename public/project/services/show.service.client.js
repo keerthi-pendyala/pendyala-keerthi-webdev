@@ -7,7 +7,7 @@
 
         var api = {
             "createShow": createShow,
-           // "deleteShow": deleteShow,
+            "deleteShow": deleteShow,
             "updateShow": updateShow,
             "findShowByShowId":findShowByShowId,
             "getTVShows":getTVShows,
@@ -15,21 +15,16 @@
             "findProductById":findProductById,
             "getSellers":getSellers,
             "addSeller":addSeller,
+            "deleteShow":deleteShow,
             "removeSeller":removeSeller,
             "purchaseTVShow":purchaseTVShow,
             "getTrailer":getTrailer,
             "getCredits":getCredits,
-            "getSimilarShows":getSimilarShows
+            "getSimilarShows":getSimilarShows,
+            "getLatest":getLatest
         };
         return api;
 
-
-        // function deleteShow(ShowId) {
-        //     return $http.delete('/api/user/'+UserId)
-        //         .then(function (response) {
-        //             return response.data;
-        //         });
-        // }
 
         function createShow(Show) {
             return $http.post("/api/show", Show)
@@ -68,6 +63,13 @@
         }
 
         function removeSeller(sid,pid) {
+            return $http.delete("/api/seller/"+sid+"/"+pid)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function deleteShow(pid) {
             return $http.delete("/api/seller/"+sid+"/"+pid)
                 .then(function (response) {
                     return response.data;
@@ -143,5 +145,15 @@
                 });
         }
 
+
+        function getLatest() {
+            var key = "53b51c871dad98d0c04e5b6c841e5240";
+            var urlBase = "https://api.themoviedb.org/3/tv/top_rated?api_key=KEY&language=en-US&page=1";
+            var url = urlBase.replace("KEY", key);
+            return $http.get(url)
+                .then(function (response) {
+                    return(response.data);
+                });
+        }
     }
 })();

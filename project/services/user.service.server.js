@@ -9,6 +9,7 @@ module.exports = function (app, model) {
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
+    app.post("/api/admin/create", createAdminUser);
     app.post("/api/like/:userId/:pid", liketheshow);
     app.post("/api/undolike/:userId/:pid", undolike);
     app.post("/api/wishlist/:userId/:pid", addtowishlist);
@@ -20,8 +21,6 @@ module.exports = function (app, model) {
     app.post("/api/logout", logout);
     app.get("/api/loggedIn", loggedIn);
     app.get("/auth/facebook", passport.authenticate('facebook'), facebookLogin);
-    //   app.put("/api/show/purchase/:buyerId",purchaseTVShow);
-    //  app.post("/api/seller/:sellerId/:showId", addShow);
     app.post("/api/seller/show/:sellerId/:showId", addTVShow);
     app.get("/api/users", findAllUsers);
     app.get('/auth/facebook/callback',
@@ -181,6 +180,17 @@ module.exports = function (app, model) {
     }
 
 
+    function createAdminUser(req,res){
+        var user = req.body;
+        user.password = bcrypt.hashSync(user.password);
+        model.usermodel
+            .createUser(user)
+            .then(function (usr) {
+                res.sendStatus(200)
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });
+    }
     function liketheshow(req, res) {
         model.usermodel
             .liketheshow(req.params.userId,req.params.pid)

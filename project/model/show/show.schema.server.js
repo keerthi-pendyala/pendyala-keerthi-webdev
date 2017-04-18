@@ -6,7 +6,7 @@ module.exports = function () {
         comments:[String],
         count:Number,
         sellers:[String],
-        shows_liked:[{type: mongoose.Schema.Types.ObjectId, ref: 'usermodel'}],
+        users_liked:[{type: mongoose.Schema.Types.ObjectId, ref: 'usermodel'}],
         trades:[{type: mongoose.Schema.Types.ObjectId, ref: 'trademodel'}]
     },{collection: 'mongo.show'});
     return showSchema;
