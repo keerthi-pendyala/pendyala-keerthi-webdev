@@ -54,15 +54,13 @@
 
         <br/>
 
-        <div class="container-fluid">
-
             <div ng-show="model.message" class="alert alert-danger" role="alert">
                 {{model.message}}
             </div>
 
             <div class="row container-fluid" ng-show="model.shows">
                 <div ng-repeat="showarr in model.shows">
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" ng-if="showarr.poster_path">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-if="showarr.poster_path">
                         <a href="#/user/search/{{showarr.id}}">
                             <img class="img-responsive-home thumbnail"
                                  ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
@@ -74,7 +72,7 @@
 
             <div class="row container-fluid" ng-hide="model.shows">
                 <div ng-repeat="showarr in model.tvshow">
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" ng-if="showarr.poster_path">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-if="showarr.poster_path">
                         <a href="#/user/search/{{showarr.id}}">
                             <img class="img-responsive-home thumbnail"
                                  ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
@@ -83,6 +81,5 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
