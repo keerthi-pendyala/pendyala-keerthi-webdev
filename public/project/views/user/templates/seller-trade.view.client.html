@@ -9,7 +9,6 @@
             <a class="navbar-brand" href="#/show">
                 <b class="kp-navbar-text pull-right">S.O.W</b>
             </a>
-
         </div>
     </nav>
 
@@ -40,26 +39,26 @@
             <table class="table table-responsive">
                 <thead>
                 <tr>
-                    <th>Trade ID</th>
+                    <th class="hidden-xs">Trade ID</th>
                     <th>Show name</th>
                     <th class="visible-md visible-lg">Show Poster</th>
                     <th>Buyer Name</th>
-                    <th>Buyer Email</th>
-                    <th>Buyer Phone</th>
+                    <th class="hidden-xs">Buyer Email</th>
+                    <th class="hidden-xs">Buyer Phone</th>
                 </tr>
                 </thead>
                 <tbody ng-repeat="buyer in model.buyerInfo track by $index">
                 <tr ng-if="buyer.selle === true">
-                    <td>{{model.sellerTrade[$index]._id}}</td>
+                    <td class="hidden-xs">{{model.sellerTrade[$index]._id}}</td>
                     <td>{{model.shows_info[$index].name}}</td>
                     <td class="visible-md visible-lg">  <a href="#/user/search/{{show.id}}">
                         <img ng-src="https://image.tmdb.org/t/p/w500/{{model.shows_info[$index].poster_path}}" class="img-circle img-responsive"
                              alt="No poster available" width="275" height="250">
                     </a>
                     </td>
-                    <td>{{buyer.name}}</td>
-                    <td>{{buyer.email}}</td>
-                    <td>{{buyer.phone}}</td>
+                    <td >{{buyer.name}}</td>
+                    <td class="hidden-xs">{{buyer.email}}</td>
+                    <td class="hidden-xs">{{buyer.phone}}</td>
                 </tr>
                 </tbody>
             </table>

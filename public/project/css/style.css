@@ -52,11 +52,13 @@ h6{
 }
 
 .img-responsive-home {
+    max-height: 250px;
     max-width: 200px;
 }
 
-@media(max-width: 768px){
+@media(max-width: 500px){
     .img-responsive-home {
+        max-height: 100px;
         max-width: 90px;
     }
 }
@@ -263,8 +265,8 @@ td {
 
 .img-text{
     overflow:hidden;
-    width:40px;
-    height:20px;
+    width:100px;
+    height:70px;
 }
 
 .img-poster{

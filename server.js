@@ -20,7 +20,7 @@ app.use(passport.session());
 
 
 require ("./project/app.js")(app);
-require ("./assignment/app.js")(app);
+//require ("./assignment/app.js")(app);
 require ("./test/app.js")(app);
 //require ("./assignment/app.js")(app);
 

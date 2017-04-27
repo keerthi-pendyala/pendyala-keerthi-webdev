@@ -16,6 +16,7 @@ module.exports = function (app,model) {
             });
     }
 
+
     function findUser(req, res) {
         var username = req.query.username;
         var password = req.query.password;

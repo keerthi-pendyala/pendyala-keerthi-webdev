@@ -16,7 +16,7 @@
         </div>
         <div class="navbar-header pull-left">
             <a class="navbar-brand" href="#/show">
-                <b class="kp-navbar-text">SoapOperaWorld</b>
+               <b class="kp-navbar-text">SoapOperaWorld</b>
             </a>
         </div>
     </div>
@@ -25,31 +25,32 @@
 <div class="container-fluid">
     <div id="body-div">
         <div class="container">
-            <br>
             <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-ng-repeat="backdrop_img in model.backdrop | limitTo:8"
                         data-slide-to="{{$index}}" data-ng-class="{active:$first}"></li>
                 </ol>
+
                 <div class="carousel-inner" role="listbox">
                     <div class="item" data-ng-class="{active:$first}" data-ng-repeat="backdrop_img in model.backdrop">
                         <img ng-src="{{backdrop_img}}" alt="TvShow">
+                        <a href ="#/" class="carousel-caption">
+                            <h2>{{model.tvshows[$index].name}}</h2>
+                        </a>
                     </div>
                 </div>
+            </div>
+            <div class="input-group car-search">
+                <input ng-model="show.showname" type="text" class="form-control" placeholder="Search for TV shows!"/>
+                <span class="input-group-addon">
+            <a>
+               <i ng-click="model.getTVShows(show)" class="fa fa-search"></i>
+            </a></span>
             </div>
         </div>
 
 
         <br/>
-
-        <div class="input-group">
-            <input ng-model="show.showname" type="text" class="form-control" placeholder="Search for TV shows!"/>
-            <span class="input-group-addon">
-            <a>
-               <i ng-click="model.getTVShows(show)" class="fa fa-search"></i>
-            </a>
-    </span>
-        </div>
 
         <br/>
 
@@ -75,7 +76,7 @@
                 <div ng-repeat="showarr in model.tvshow">
                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" ng-if="showarr.poster_path">
                         <a href="#/user/search/{{showarr.id}}">
-                            <img class="img-responsive-home  thumbnail"
+                            <img class="img-responsive-home thumbnail"
                                  ng-src="https://image.tmdb.org/t/p/w500/{{showarr.poster_path}}"
                                  alt="{{showarr.poster_path}}"/>
                         </a>

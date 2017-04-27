@@ -8,22 +8,22 @@
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
         $routeProvider
             .when("/", {
-                templateUrl: "views/user/templates/user-seller-login.view.client.html",
+                templateUrl: "views/user/templates/login.view.client.html",
                 controller: 'loginController',
                 controllerAs: 'model'
             })
             .when("/login", {
-                templateUrl: "views/user/templates/user-seller-login.view.client.html",
+                templateUrl: "views/user/templates/login.view.client.html",
                 controller: 'loginController',
                 controllerAs: 'model'
             })
             .when("/register", {
-                templateUrl: "views/user/templates/user-seller-register.view.client.html",
+                templateUrl: "views/user/templates/register.view.client.html",
                 controller: 'registerController',
                 controllerAs: 'model'
             })
             .when("/user/:uid", {
-                templateUrl: "views/user/templates/user-seller-profile.view.client.html",
+                templateUrl: "views/user/templates/profile.view.client.html",
                 controller: 'profileController',
                 controllerAs: 'model'
             })

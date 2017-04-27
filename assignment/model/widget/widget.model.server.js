@@ -86,7 +86,6 @@ module.exports = function (model) {
                         type: newwidget.type,
                         text:newwidget.text,
                         __page: newwidget._page,
-                        order:newwidget.order,
                         dateCreated:newwidget.dateCreated
                     })
                 .then(function (widget, err) {
@@ -106,7 +105,6 @@ module.exports = function (model) {
                         name: newwidget.name,
                         type: newwidget.type,
                         text:newwidget.text,
-                        order:newwidget.order,
                         __page: newwidget._page,
                         url:newwidget.url,
                         width:newwidget.width,
@@ -130,7 +128,6 @@ module.exports = function (model) {
                         type: newwidget.type,
                         text:newwidget.text,
                         url:newwidget.url,
-                        order:newwidget.order,
                         width:newwidget.width,
                         dateCreated:newwidget.dateCreated
                     })
@@ -151,7 +148,6 @@ module.exports = function (model) {
                         text: newwidget.text,
                         type: newwidget.type,
                         rows:newwidget.rows,
-                        order:newwidget.order,
                         placeholder:newwidget.placeholder,
                         formatted:newwidget.formatted,
                         dateCreated:newwidget.dateCreated
