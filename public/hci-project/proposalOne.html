@@ -21,7 +21,7 @@
     <div id="menubar">
       <ul id="menu">
         <li><a href="index.html">Home</a></li>
-        <li class="selected"><a href="proposalOne.html">Proposal 1</a></li>
+        <li class="selected"><a href="proposalOne.html">Project</a></li>
         <li><a href="proposalTwo.html">Proposal 2</a></li>
         <li><a href="proposalThree.html">Proposal 3</a></li>
         <li><a href="contact.html">Contact Me</a></li>
@@ -31,34 +31,152 @@
   <div id="content_header"></div>
   <div id="site_content">
     <div id="banner"></div>
-     <H2> <b>Proposal 1</b> - <i>NUTransit</i>  </H2> <br/>
+     <H2> <b>Project </b> - <i>TA Office Hours Management System</i>  </H2> <br/>
 
-      <h4>Project Idea</h4>
-      This web application is a dashboard with live updates on nearest transport options available and whether you can reach
-      them on time. For NU students, the options for public transport are Orange Line, Green Line , Bus and RedEye. The
-      website at any point shows transport in these categories and their times of arrival along with an indication of
-      whether the student will be able to make it in time to catch it based on his/her current location.
-      The student can process all this information at a glance and head towards the nearest possible option without
-      wasting any time.
+      <!--<h4>Project Idea</h4>-->
+      <!---->
 
-      <br/><br/>
+      <!--<br/><br/>-->
 
-      <h4>Technologies and Comparison with existing systems</h4>
-      <b>Technology</b>  <br/>
-      I would like to implement this as a MEAN stack web application using Google Distance Matrix and MBTA APIs <br/>
+      <!--<h4>Technologies and Comparison with existing systems</h4>-->
+      <!--<b>Technology</b>  <br/>-->
+      <!--I would like to implement this as a MEAN stack web application using Google Distance Matrix and MBTA APIs <br/>-->
 
-      <b>Existing Systems</b> <br/>
-      1) Google Maps shows the fastest route and the transport options available. However there is no comparison between these
-      options at a quick glance. The user has to mentally calculate if he will make it on time to catch the train and switch
-      between tabs while doing so.<br/>
+      <!--<b>Existing Systems</b> <br/>-->
+      <!--1) Google Maps shows the fastest route and the transport options available. However there is no comparison between these-->
+      <!--options at a quick glance. The user has to mentally calculate if he will make it on time to catch the train and switch-->
+      <!--between tabs while doing so.<br/>-->
 
-      <b>Key Benefits</b> <br/>
-      1) Designed to help NU students evaluate the quickest possible mode of transport in the vicinity of the campus.<br/>
-      2) A indication of whether they will reach on time to catch the train/bus is useful in making this choice.<br/><br/>
+      <!--<b>Key Benefits</b> <br/>-->
+      <!--1) Designed to help NU students evaluate the quickest possible mode of transport in the vicinity of the campus.<br/>-->
+      <!--2) A indication of whether they will reach on time to catch the train/bus is useful in making this choice.<br/><br/>-->
 
-    <h4>MockUps</h4>
+    <!--<h4>MockUps</h4>-->
 
-    <img src="../img/nutransit01.jpeg" alt="picture-05" height="500" width="500">
+    <!--<img src="../img/nutransit01.jpeg" alt="picture-05" height="500" width="500">-->
+
+
+
+      <h4>Link to prototype</h4>
+
+      Our Project can be cloned from  <a href = "https://github.ccs.neu.edu/keerthi/cs5340-project.git">here</a>
+
+      <br/>
+      <br/>
+
+      <h4>StartUp instructions</h4>
+
+      <b>Access the website on heroku :</b>
+      <br/>
+      To login as student visit - https://tohms.herokuapp.com/project/#/home
+      <br/>
+      To login as TA visit - https://tohms.herokuapp.com/project/#/taHome
+
+      <br/>
+      <br/>
+
+
+      <b>Alternatively, use git to clone and run on local system:</b>
+      <br/>
+      1. Clone the git repository mentioned above using - git clone https://github.ccs.neu.edu/keerthi/cs5340-project.git
+
+      <br/>
+
+      2. This is a private repository, you won&#39;t have access to it unless we add you as collaborator. Please email your
+         git.ccs.neu.edu id to us at - keerthi@ccs.neu.edu or kmcarol26@ccs.neu.edu as soon as possible for I7 testing.
+
+      <br/>
+
+      3. Once you obtained access and successfully cloned the project, on the terminal switch to cs5340-project
+         folder by typing : cd cs5340-project
+
+      <br/>
+
+      4. run the command : npm install
+
+      <br/>
+
+      5. run the command : mongod
+
+      <br/>
+
+      6. On another terminal (without closing the first one), run the command : node server.js
+
+      <br/>
+
+      7. To login as student - Go to localhost:3000/project/#/home .
+      To login as TA - Go to localhost:3000/project/#/taHome .
+
+
+      <br/>
+      <br/>
+
+
+      <h4> Breifing from P4</h4>
+
+      <p>
+      Hi, we are designing a Teaching Assistant Office Hours Management System (TOHMS).
+          The purpose of this application is to allow students to book appointments with the TAs for their office hours visits.
+          The TAs in turn can use the application to be give their availability and see information about booked appointments.
+
+      Informed consent: We are conducting a study to find out what people think about this. We will not record or publish any information with your name.
+          This is for a course we are taking in Human-Computer Interaction under Prof. David Sprague.
+          Your participation is voluntary, and you can stop anytime and ask that your data not be used.
+          It should take about 20 minutes to 30 minutes. Can you help us out with this?
+      Awesome. The purpose of today&#39;s session is for you to help us figure out how to make this web interface more user-friendly before we finish developing it.
+          But believe it or not, we are not going to use a computer.
+          As you&#39;ll see, we have actually created paper versions of the screens, and my friend Keerthi will be playing the computer.
+          If you want to do something, you&#39;ll need to interact with the prototype just as you would on a computer. Use your finger to click on buttons.
+          These pieces of tape indicate places where you can type something in, and here&#39s your keyboard (give pen). It&#39s OK to write on this.
+      Your job is to tell us what makes sense, what&#39;s confusing, whether it works the way you&#39;d expect it to.
+      Keep in mind that we&#39;re testing the interface--we&#39;re not testing you--so if you run into any problems it&#39;s not your fault and it means that there&#39;s something we need to
+          change.
+          I&#39;ll be sitting next to you, and I can help you if you want.
+      Please tell us what makes sense to you, what&#39;s confusing, and any questions that come to mind.
+          Your questions are especially valuable, but I may not answer them right away because our goal is to change the interface, so it answers them.
+      Remember that we&#39;re testing the interface--we&#39;re not testing you. Are you ready to start?
+      OK, here is the first thing we&#39;d like you to do. Take a minute to read this and let me know if it makes sense.
+          If so, then whenever you&#39;re ready please show us what you would do first.
+      </p>
+
+
+      <br/>
+      <br/>
+
+      <h4>Tasks</h4>
+
+      <h5> <b>Task 1 </b></h5>
+
+
+      You are a student at NEU and have taken two courses this semester. You and your friend have a question to ask the Teaching Assistant
+      In HW-2 of Database Management Systems course.
+
+      You are having difficulty designing the database for the Assignment problem, specifically in terms of normalizing the tables.
+      Use the TOHMS(TA Office Hours Management Application) to look for the next TA office hour session in the month of November
+      and make an appointment for you and your friend .
+
+      <br/>
+      <br/>
+
+      <h5> <b>Task 2</b></h5>
+
+
+      You are a student at NEU. You have a question about File uploading in HW-1 in Database Management Systems course.
+      Your friend told you that he made an appointment on TOHMS for the same question already for
+      the 22nd November, 2018 TA hour session. Use TOHMS to join the same.
+
+      <br/>
+      <br/>
+
+      <h5> <b>Task 3</b></h5>
+
+
+      You are a teaching assistant for Database Management System course at NEU.
+      You want to prepare for the next TA office hour session (on 22nd November, 2018).
+      View all the student questions for the same using TOHMS.
+
+
+
 
 
   </div>
